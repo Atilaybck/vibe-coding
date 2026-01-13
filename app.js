@@ -3,20 +3,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   let questions = [];
   let index = 0;
   let flipped = false;
-  let locked = false; // şık seçilince kilitle
+  let locked = false;
+
+  // modlar
+  let mode = "all"; // "all" | "wrongs"
+  const wrongSet = new Set(); // _uid tutuyor
 
   const card = document.getElementById("card");
   const front = document.getElementById("front");
   const back = document.getElementById("back");
   const counter = document.getElementById("counter");
 
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
   const shuffleBtn = document.getElementById("shuffleBtn");
+  const wrongsBtn = document.getElementById("wrongsBtn");
+  const resetBtn = document.getElementById("resetBtn");
 
-  // ✅ progress bar
+  // progress
   const progressFill = document.getElementById("progressFill");
-  const answered = new Set(); // cevaplanan soru index’leri
+
+  // ✅ iki ayrı progress set’i
+  const answeredAll = new Set();    // all mod: index bazlı
+  const answeredWrongs = new Set(); // wrongs mod: _uid bazlı
 
   function escapeHtml(s = "") {
     return String(s)
@@ -25,14 +32,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       .replaceAll(">", "&gt;");
   }
 
-  // "C) 10" / "C" / "c)..." -> "C"
   function getAnswerKey(ans = "") {
     const s = String(ans).trim().toUpperCase();
     const m = s.match(/^([A-Z])/);
     return m ? m[1] : null;
   }
 
-  // opt: "C) 10" veya {label:"C", text:"10"} veya {text:"C) 10"}
   function getOptionKey(opt) {
     if (typeof opt === "string") {
       const m = opt.trim().match(/^([A-Z])\s*\)/i);
@@ -48,13 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return null;
   }
 
-  function updateProgress() {
-    const total = questions.length || 1;
-    const done = answered.size;
-    const pct = Math.round((done / total) * 100);
-    if (progressFill) progressFill.style.width = pct + "%";
-  }
-
   function renderQuestionCode(q) {
     if (!q.code) return "";
     const lang = q.lang || "javascript";
@@ -67,12 +65,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function renderOptions(q) {
     if (!Array.isArray(q.options)) return "";
-
     const lang = q.lang || "javascript";
 
     return q.options
       .map((opt) => {
-        // string seçenek
         if (typeof opt === "string") {
           const key = getOptionKey(opt) || "";
           return `<div class="opt" role="button" tabindex="0" data-key="${escapeHtml(
@@ -80,7 +76,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           )}">${escapeHtml(opt)}</div>`;
         }
 
-        // object seçenek
         const key = getOptionKey(opt) || "";
         const label = opt.label ? `${escapeHtml(opt.label)}) ` : "";
         const hasCode = typeof opt.code === "string" && opt.code.trim().length > 0;
@@ -111,9 +106,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Yanlış seçince: seçilen kırmızı + doğru olan yeşil aynı anda
+  function getActiveList() {
+    if (mode === "wrongs") {
+      const arr = questions.filter((q) => wrongSet.has(q._uid));
+      return arr.length ? arr : questions;
+    }
+    return questions;
+  }
+
+  // ✅ mode’a göre progress hesapla
+  function updateProgress() {
+    const active = getActiveList();
+    const total = active.length || 1;
+
+    let done = 0;
+    if (mode === "all") {
+      done = answeredAll.size;
+    } else {
+      // wrongs modunda: aktif listedeki _uid’lerden kaç tanesi answeredWrongs’ta
+      done = active.reduce((acc, q) => acc + (answeredWrongs.has(q._uid) ? 1 : 0), 0);
+    }
+
+    const pct = Math.round((done / total) * 100);
+    if (progressFill) progressFill.style.width = pct + "%";
+  }
+
   function applyOptionResult(selectedKey) {
-    const correctKey = getAnswerKey(questions[index]?.answer);
+    const active = getActiveList();
+    const correctKey = getAnswerKey(active[index]?.answer);
     const opts = front.querySelectorAll(".opt");
 
     opts.forEach((el) => {
@@ -134,10 +154,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     locked = true;
 
-    // ✅ bu soruyu cevaplandı say (ilk seçimle)
-    answered.add(index);
-    updateProgress();
+    const active = getActiveList();
+    const q = active[index];
+    const correctKey = getAnswerKey(q?.answer);
 
+    // all mod: index bazlı cevaplandı
+    if (mode === "all") {
+      answeredAll.add(index);
+    } else {
+      // wrongs mod: _uid bazlı cevaplandı
+      if (q?._uid) answeredWrongs.add(q._uid);
+    }
+
+    // yanlışsa wrongSet'e ekle
+    if (selectedKey && correctKey && selectedKey !== correctKey && q?._uid) {
+      wrongSet.add(q._uid);
+    }
+
+    updateProgress();
     applyOptionResult(selectedKey);
     fitCardHeight();
   }
@@ -161,10 +195,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function render() {
-    if (!questions.length) return;
+    const active = getActiveList();
+    if (!active.length) return;
 
-    const q = questions[index];
-    counter.textContent = `${index + 1} / ${questions.length}`;
+    if (index >= active.length) index = 0;
+
+    const q = active[index];
+    counter.textContent = `${index + 1} / ${active.length}`;
     locked = false;
 
     front.innerHTML = `
@@ -188,7 +225,7 @@ ${renderQuestionCode(q)}
     card.classList.remove("flip");
 
     bindOptionClicks();
-    updateProgress();
+    updateProgress(); // ✅ her render’da mode’a göre
     fitCardHeight();
   }
 
@@ -199,21 +236,17 @@ ${renderQuestionCode(q)}
   }
 
   function next() {
-    index = (index + 1) % questions.length;
-    render();
-  }
-
-  function prev() {
-    index = (index - 1 + questions.length) % questions.length;
+    const active = getActiveList();
+    index = (index + 1) % active.length;
     render();
   }
 
   function randomNext() {
-    if (!questions.length) return;
-    if (questions.length === 1) return;
+    const active = getActiveList();
+    if (!active.length || active.length === 1) return;
 
     let r = index;
-    while (r === index) r = Math.floor(Math.random() * questions.length);
+    while (r === index) r = Math.floor(Math.random() * active.length);
     index = r;
     render();
   }
@@ -223,7 +256,18 @@ ${renderQuestionCode(q)}
       const j = Math.floor(Math.random() * (i + 1));
       [questions[i], questions[j]] = [questions[j], questions[i]];
     }
+    mode = "all";
     index = 0;
+    render();
+  }
+
+  function resetAll() {
+    wrongSet.clear();
+    answeredAll.clear();
+    answeredWrongs.clear();
+    mode = "all";
+    index = 0;
+    if (progressFill) progressFill.style.width = "0%";
     render();
   }
 
@@ -237,48 +281,54 @@ ${renderQuestionCode(q)}
     if (e.key === "Enter" || e.key === " ") toggleFlip();
   });
 
-  nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    next();
-  });
-
-  prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    prev();
-  });
-
   shuffleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     shuffle();
   });
 
-  // kartın DIŞINA tıklayınca rastgele soru gelsin
+  wrongsBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mode = mode === "all" ? "wrongs" : "all";
+    index = 0;
+    render();
+  });
+
+  resetBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    resetAll();
+  });
+
   document.addEventListener("click", () => {
     randomNext();
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") next();
-    if (e.key === "ArrowLeft") prev();
     if (e.key === "r" || e.key === "R") randomNext();
   });
 
   // load questions
   try {
-    const [resMain, res43] = await Promise.all([
-      fetch("./questions/questions.json"),
-      fetch("./questions/4.3-question.json"),
-    ]);
+  const [res41, res42, res43] = await Promise.all([
+    fetch("./questions/4.1-question.json"),
+    fetch("./questions/4.2-question.json"),
+    fetch("./questions/4.3-question.json"),
+  ]);
 
-    if (!resMain.ok) throw new Error("questions.json yüklenemedi");
-    if (!res43.ok) throw new Error("4.3-question.json yüklenemedi");
+  if (!res41.ok) throw new Error("4.1-question.json yüklenemedi");
+  if (!res42.ok) throw new Error("4.2-question.json yüklenemedi");
+  if (!res43.ok) throw new Error("4.3-question.json yüklenemedi");
 
-    const q1 = await resMain.json();
-    const q2 = await res43.json();
+  const q41 = await res41.json();
+  const q42 = await res42.json();
+  const q43 = await res43.json();
 
-    questions = [...q1, ...q2];
+  questions = [...q41, ...q42, ...q43].map((q, i) => ({
+    ...q,
+    _uid: `q_${i + 1}`,
+  }));
 
-    shuffle();
+  shuffle();
   } catch (err) {
     front.innerHTML = `<p class="q-title">Hata</p><div class="muted">${escapeHtml(
       err.message

@@ -1,0 +1,133 @@
+[
+  {
+    "id": 1,
+    "title": "1. JavaScript’te fonksiyonun temel amacı nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Kod çalıştırmayı durdurmak" },
+      { "label": "B", "text": "Tekrar kullanılabilir kod bloğu oluşturmak" },
+      { "label": "C", "text": "Değişken saklamak" },
+      { "label": "D", "text": "Belleği temizlemek" }
+    ],
+    "answer": "B",
+    "explain": "Fonksiyonlar tekrar kullanılabilir kod blokları oluşturmak için kullanılır."
+  },
+  {
+    "id": 2,
+    "title": "2. Aşağıdakilerden hangisi Function Declaration’dır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "const sum = (a,b) => a+b" },
+      { "label": "B", "text": "let sum = function(a,b){}" },
+      { "label": "C", "text": "function sum(a,b){}" },
+      { "label": "D", "text": "sum(a,b) {}" }
+    ],
+    "answer": "C",
+    "explain": "Function Declaration, `function name(){}` şeklinde tanımlanır."
+  },
+  {
+    "id": 3,
+    "title": "3. Function Declaration’ın en önemli özelliği hangisidir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Daha kısa yazılır" },
+      { "label": "B", "text": "Hoisting vardır" },
+      { "label": "C", "text": "Daha hızlı çalışır" },
+      { "label": "D", "text": "Arrow function’dır" }
+    ],
+    "answer": "B",
+    "explain": "Function Declaration hoisting’e sahiptir; tanımlanmadan önce çağrılabilir."
+  },
+  {
+    "id": 4,
+    "title": "4. Function Expression için hangisi doğrudur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Tanımlanmadan önce çağrılabilir" },
+      { "label": "B", "text": "Hoisting vardır" },
+      { "label": "C", "text": "Değişkene atanır" },
+      { "label": "D", "text": "Sadece arrow ile yazılır" }
+    ],
+    "answer": "C",
+    "explain": "Function Expression bir değişkene atanarak tanımlanır."
+  },
+  {
+    "id": 5,
+    "title": "5. Parametre nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Fonksiyonun döndürdüğü değer" },
+      { "label": "B", "text": "Fonksiyonun aldığı dış veri" },
+      { "label": "C", "text": "Fonksiyonun adı" },
+      { "label": "D", "text": "Fonksiyonun bellekteki yeri" }
+    ],
+    "answer": "B",
+    "explain": "Parametre, fonksiyonun dışarıdan aldığı girdidir."
+  },
+  {
+    "id": 6,
+    "title": "6. Aşağıdakilerden hangisi parametredir?",
+    "lang": "javascript",
+    "code": "function sum(a, b) {\n  return a + b;\n}",
+    "options": [
+      { "label": "A", "text": "sum" },
+      { "label": "B", "text": "return" },
+      { "label": "C", "text": "a ve b" },
+      { "label": "D", "text": "a + b" }
+    ],
+    "answer": "C",
+    "explain": "`a` ve `b` fonksiyonun parametreleridir."
+  },
+  {
+    "id": 7,
+    "title": "7. `return` ifadesiyle ilgili hangisi doğrudur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Fonksiyonun başında olmalı" },
+      { "label": "B", "text": "Fonksiyonu durdurur ve değer döndürür" },
+      { "label": "C", "text": "Zorunludur" },
+      { "label": "D", "text": "Sadece number döndürür" }
+    ],
+    "answer": "B",
+    "explain": "`return` fonksiyonu bitirir ve bir değer döndürür."
+  },
+  {
+    "id": 8,
+    "title": "8. Bir fonksiyonda `return` yoksa ne döner?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "null" },
+      { "label": "B", "text": "false" },
+      { "label": "C", "text": "0" },
+      { "label": "D", "text": "undefined" }
+    ],
+    "answer": "D",
+    "explain": "JavaScript’te `return` yoksa fonksiyon varsayılan olarak `undefined` döner."
+  },
+  {
+    "id": 9,
+    "title": "9. Default parametre ne işe yarar?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Parametreyi zorunlu yapar" },
+      { "label": "B", "text": "Parametre gönderilmezse varsayılan değer verir" },
+      { "label": "C", "text": "Parametreyi siler" },
+      { "label": "D", "text": "Return yerine geçer" }
+    ],
+    "answer": "B",
+    "explain": "Parametre `undefined` gelirse varsayılan (default) değer kullanılır."
+  },
+  {
+    "id": 10,
+    "title": "10. Aşağıdakilerden hangisi doğru bir default parametre kullanımıdır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "function greet(name: \"Ali\") {}" },
+      { "label": "B", "text": "function greet(name == \"Ali\") {}" },
+      { "label": "C", "text": "function greet(name = \"Ali\") {}" },
+      { "label": "D", "text": "function greet(\"Ali\") {}" }
+    ],
+    "answer": "C",
+    "explain": "Default değer `=` ile verilir: `function greet(name = \"Ali\") {}`."
+  }
+]

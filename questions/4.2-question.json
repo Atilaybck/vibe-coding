@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "title": "1. Aşağıdakilerden hangisi Function Declaration’dır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "const greet = () => {}" },
+      { "label": "B", "text": "let greet = function(){}" },
+      { "label": "C", "text": "function greet(){}" },
+      { "label": "D", "text": "greet = () => {}" }
+    ],
+    "answer": "C",
+    "explain": "Function Declaration, `function name(){}` şeklinde tanımlanır."
+  },
+  {
+    "id": 2,
+    "title": "2. Function Declaration ile ilgili hangisi doğrudur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Hoisting yoktur" },
+      { "label": "B", "text": "Sadece arrow ile yazılır" },
+      { "label": "C", "text": "Tanımlanmadan önce çağrılabilir" },
+      { "label": "D", "text": "Değişkene atanmak zorundadır" }
+    ],
+    "answer": "C",
+    "explain": "Function Declaration hoisting’e sahiptir."
+  },
+  {
+    "id": 3,
+    "title": "3. Function Expression’ın temel özelliği nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Hoisting vardır" },
+      { "label": "B", "text": "İsim vermek zorunludur" },
+      { "label": "C", "text": "Değişkene atanır" },
+      { "label": "D", "text": "Sadece tek satır olur" }
+    ],
+    "answer": "C",
+    "explain": "Function Expression bir değişkene atanarak tanımlanır."
+  },
+  {
+    "id": 4,
+    "title": "4. Aşağıdakilerden hangisi Function Expression örneğidir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "function sum(a,b){}" },
+      { "label": "B", "text": "const sum = function(a,b){}" },
+      { "label": "C", "text": "sum(a,b) => a+b" },
+      { "label": "D", "text": "function = sum(){}" }
+    ],
+    "answer": "B",
+    "explain": "Fonksiyon bir değişkene atanmıştır."
+  },
+  {
+    "id": 5,
+    "title": "5. Arrow function’ın temel amacı nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Daha yavaş çalışmak" },
+      { "label": "B", "text": "Daha uzun yazım" },
+      { "label": "C", "text": "Daha kısa ve modern sözdizimi" },
+      { "label": "D", "text": "Sadece matematik işlemleri yapmak" }
+    ],
+    "answer": "C",
+    "explain": "Arrow function daha kısa ve modern bir yazım sunar."
+  },
+  {
+    "id": 6,
+    "title": "6. Aşağıdakilerden hangisi doğru bir arrow function’dır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "const sum => (a,b) a+b" },
+      { "label": "B", "text": "const sum = (a,b) => a+b" },
+      { "label": "C", "text": "const sum = function => a+b" },
+      { "label": "D", "text": "sum(a,b) -> a+b" }
+    ],
+    "answer": "B",
+    "explain": "Arrow function `=>` operatörü ile tanımlanır."
+  },
+  {
+    "id": 7,
+    "title": "7. Arrow function tek satırsa ne olur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "`return` yazmak zorunludur" },
+      { "label": "B", "text": "Süslü parantez zorunludur" },
+      { "label": "C", "text": "`return` otomatik olur" },
+      { "label": "D", "text": "Çalışmaz" }
+    ],
+    "answer": "C",
+    "explain": "Tek satır arrow function’larda implicit return vardır."
+  },
+  {
+    "id": 8,
+    "title": "8. Default parametre ne zaman devreye girer?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Parametre null ise" },
+      { "label": "B", "text": "Parametre undefined ise" },
+      { "label": "C", "text": "Parametre false ise" },
+      { "label": "D", "text": "Parametre 0 ise" }
+    ],
+    "answer": "B",
+    "explain": "Default parametre sadece undefined durumunda çalışır."
+  },
+  {
+    "id": 9,
+    "title": "9. Aşağıdakilerden hangisi default parametre kullanımına örnektir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "function greet(name: \"Ali\") {}" },
+      { "label": "B", "text": "function greet(name == \"Ali\") {}" },
+      { "label": "C", "text": "function greet(name = \"Ali\") {}" },
+      { "label": "D", "text": "function greet(\"Ali\") {}" }
+    ],
+    "answer": "C",
+    "explain": "`=` operatörü ile default değer atanır."
+  },
+  {
+    "id": 10,
+    "title": "10. Günlük projelerde neden Function Expression veya Arrow Function tercih edilir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Daha yavaş oldukları için" },
+      { "label": "B", "text": "Daha az kontrol sundukları için" },
+      { "label": "C", "text": "Daha kontrollü ve öngörülebilir oldukları için" },
+      { "label": "D", "text": "Hoisting olduğu için" }
+    ],
+    "answer": "C",
+    "explain": "Hoisting karmaşasını azaltır, kodu daha öngörülebilir yapar."
+  }
+]
