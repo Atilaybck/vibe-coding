@@ -1,0 +1,418 @@
+[
+  {
+    "id": 1,
+    "title": "1. Aşağıdakilerden hangisi block scope’a sahiptir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "var" },
+      { "label": "B", "text": "let" },
+      { "label": "C", "text": "function" },
+      { "label": "D", "text": "this" }
+    ],
+    "answer": "B",
+    "explain": "Block scope: bir değişkenin yalnızca tanımlandığı { } bloğu içinde erişilebilir olmasıdır."
+  },
+  {
+    "id": 2,
+    "title": "2. Bu kodun sonucu nedir?",
+    "lang": "javascript",
+    "code": "function test() {\n  let x = 10;\n}\nconsole.log(x);",
+    "options": [
+      { "label": "A", "text": "10" },
+      { "label": "B", "text": "undefined" },
+      { "label": "C", "text": "null" },
+      { "label": "D", "text": "ReferenceError" }
+    ],
+    "answer": "D",
+    "explain": "ReferenceError çünkü x sadece test fonksiyonunun block scope’unda vardır, dışarıdan erişilemez."
+  },
+  {
+    "id": 3,
+    "title": "3. `var` ile tanımlanan değişkenin scope’u nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "block" },
+      { "label": "B", "text": "global" },
+      { "label": "C", "text": "function" },
+      { "label": "D", "text": "module" }
+    ],
+    "answer": "C",
+    "explain": "`var` function scope’tur: sadece tanımlandığı fonksiyon içinde geçerlidir; {} blokları scope oluşturmaz."
+  },
+  {
+    "id": 4,
+    "title": "4. Hangisi global scope’ta tanımlanmıştır?",
+    "lang": "javascript",
+    "options": [
+      {
+        "label": "A",
+        "code": "function a() {\n  let x = 1;\n}"
+      },
+      {
+        "label": "B",
+        "code": "if (true) {\n  let y = 2;\n}"
+      },
+      {
+        "label": "C",
+        "code": "let z = 3;"
+      },
+      {
+        "label": "D",
+        "code": "function b() {\n  var k = 4;\n}"
+      }
+    ],
+    "answer": "C",
+    "explain": "`let z = 3;` global alanda yazıldığı için global scope’tadır."
+  },
+  {
+    "id": 5,
+    "title": "5. İç içe scope’larda hangisi doğrudur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Dış scope, iç scope’u görür" },
+      { "label": "B", "text": "İç scope, dış scope’u görür" },
+      { "label": "C", "text": "İkisi de birbirini görmez" },
+      { "label": "D", "text": "Sadece var görür" }
+    ],
+    "answer": "B",
+    "explain": "İç scope, dış scope’taki değişkenlere erişebilir; ters yönde erişim yoktur."
+  },
+  {
+    "id": 6,
+    "title": "6. Bu kodda `console.log(a)` çalışır mı?",
+    "lang": "javascript",
+    "code": "let a = 1;\n\nfunction test() {\n  console.log(a);\n}",
+    "options": [
+      { "label": "A", "text": "Hayır, hata verir" },
+      { "label": "B", "text": "Evet, 1 yazar" },
+      { "label": "C", "text": "undefined yazar" },
+      { "label": "D", "text": "null yazar" }
+    ],
+    "answer": "B",
+    "explain": "`a` global scope’ta, fonksiyon içinden erişilebilir."
+  },
+  {
+    "id": 7,
+    "title": "7. Aşağıdakilerden hangisi erişilemez?",
+    "lang": "javascript",
+    "code": "function outer() {\n  let b = 2;\n}",
+    "options": [
+      { "label": "A", "text": "`b` outer içinde" },
+      { "label": "B", "text": "`b` outer dışında" },
+      { "label": "C", "text": "`outer` globalde" },
+      { "label": "D", "text": "Hiçbiri" }
+    ],
+    "answer": "B",
+    "explain": "`b` sadece outer fonksiyonunun içinde var; dışarıdan erişilemez."
+  },
+  {
+    "id": 8,
+    "title": "8. Bir fonksiyon çalışıp bittiğinde içindeki `let` değişkenlere ne olur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Global’e taşınır" },
+      { "label": "B", "text": "Saklanır" },
+      { "label": "C", "text": "Yok edilir" },
+      { "label": "D", "text": "undefined olur" }
+    ],
+    "answer": "C",
+    "explain": "Fonksiyon bittiğinde, referans yoksa yerel `let` değişkenler GC ile temizlenir."
+  },
+  {
+    "id": 9,
+    "title": "9. Aşağıdakilerden hangisi doğru tanımdır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Scope = değişkenin değeri" },
+      { "label": "B", "text": "Scope = fonksiyonun adı" },
+      { "label": "C", "text": "Scope = değişkene erişim alanı" },
+      { "label": "D", "text": "Scope = closure" }
+    ],
+    "answer": "C",
+    "explain": "Scope, bir değişkene nerelerden erişilebildiğini ifade eder."
+  },
+  {
+    "id": 10,
+    "title": "10. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "let x = 5;\n\nfunction a() {\n  console.log(x);\n}\n\na();",
+    "options": [
+      { "label": "A", "text": "undefined" },
+      { "label": "B", "text": "ReferenceError" },
+      { "label": "C", "text": "5" },
+      { "label": "D", "text": "null" }
+    ],
+    "answer": "C",
+    "explain": "`x` dış scope’ta bulunduğu için fonksiyon içinden 5 yazdırılır."
+  },
+  {
+    "id": 11,
+    "title": "11. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "function test() {\n  if (true) {\n    let x = 10;\n  }\n  console.log(x);\n}\n\ntest();",
+    "options": [
+      { "label": "A", "text": "10" },
+      { "label": "B", "text": "undefined" },
+      { "label": "C", "text": "null" },
+      { "label": "D", "text": "ReferenceError" }
+    ],
+    "answer": "D",
+    "explain": "`x` sadece if bloğunun block scope’unda; dışarıdan erişilemez."
+  },
+  {
+    "id": 12,
+    "title": "12. Aşağıdakilerden hangisi `let` için doğrudur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Sadece fonksiyon scope’u vardır" },
+      { "label": "B", "text": "Block scope’a sahiptir" },
+      { "label": "C", "text": "Global’de tanımlanamaz" },
+      { "label": "D", "text": "Hoisting yapılmaz" }
+    ],
+    "answer": "B",
+    "explain": "`let` block scope’tur; { } sınırları içinde geçerlidir."
+  },
+  {
+    "id": 13,
+    "title": "13. Bu kodda hangileri erişilebilir?",
+    "lang": "javascript",
+    "code": "let a = 1;\n\nfunction outer() {\n  let b = 2;\n\n  function inner() {\n    let c = 3;\n  }\n}",
+    "options": [
+      { "label": "A", "text": "Sadece `a`" },
+      { "label": "B", "text": "`a` ve `b`" },
+      { "label": "C", "text": "`a`, `b` ve `c`" },
+      { "label": "D", "text": "Hiçbiri" }
+    ],
+    "answer": "A",
+    "explain": "Global scope’tan bakınca sadece `a` erişilebilir; `b` ve `c` fonksiyonların içindedir."
+  },
+  {
+    "id": 14,
+    "title": "14. Aşağıdakilerden hangisi block scope oluşturur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "if" },
+      { "label": "B", "text": "for" },
+      { "label": "C", "text": "{ }" },
+      { "label": "D", "text": "Hepsi" }
+    ],
+    "answer": "D",
+    "explain": "`if/for` gibi yapılar { } ile birlikte block scope oluşturur."
+  },
+  {
+    "id": 15,
+    "title": "15. Bu kodda `y` erişilebilir mi?",
+    "lang": "javascript",
+    "code": "if (true) {\n  let y = 20;\n}\n\nconsole.log(y);",
+    "options": [
+      { "label": "A", "text": "Evet, 20 yazar" },
+      { "label": "B", "text": "undefined yazar" },
+      { "label": "C", "text": "null yazar" },
+      { "label": "D", "text": "ReferenceError" }
+    ],
+    "answer": "D",
+    "explain": "`y` if bloğunun block scope’unda; dışarıdan erişilemez."
+  },
+  {
+    "id": 16,
+    "title": "16. Closure nedir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Fonksiyonun kendisi" },
+      { "label": "B", "text": "Global değişken" },
+      { "label": "C", "text": "Fonksiyonun dış değişkenleri hatırlaması" },
+      { "label": "D", "text": "Scope’un kapanması" }
+    ],
+    "answer": "C",
+    "explain": "Closure: bir fonksiyonun, oluşturulduğu lexical scope’taki değişkenleri hatırlayabilmesidir."
+  },
+  {
+    "id": 17,
+    "title": "17. Closure oluşması için hangisi zorunludur?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "`var` kullanımı" },
+      { "label": "B", "text": "İç fonksiyonun dışarı dönmesi veya saklanması" },
+      { "label": "C", "text": "Global değişken" },
+      { "label": "D", "text": "`this` kullanımı" }
+    ],
+    "answer": "B",
+    "explain": "İç fonksiyon dışarı taşınır (return/atanır) ve dış değişkenlere erişmeye devam ederse closure oluşur."
+  },
+  {
+    "id": 18,
+    "title": "18. Bu kodda closure var mı?",
+    "lang": "javascript",
+    "code": "function test() {\n  let x = 10;\n  console.log(x);\n}\n\ntest();",
+    "options": [
+      { "label": "A", "text": "Evet" },
+      { "label": "B", "text": "Hayır" },
+      { "label": "C", "text": "Bazen" },
+      { "label": "D", "text": "Sadece `var` olursa" }
+    ],
+    "answer": "B",
+    "explain": "İç fonksiyon dışarı taşınmadığı için closure oluşmaz."
+  },
+  {
+    "id": 19,
+    "title": "19. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "function counter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\n\nconst inc = counter();\ninc();\ninc();",
+    "options": [
+      { "label": "A", "text": "1, 1" },
+      { "label": "B", "text": "0, 1" },
+      { "label": "C", "text": "1, 2" },
+      { "label": "D", "text": "ReferenceError" }
+    ],
+    "answer": "C",
+    "explain": "inc aynı closure içindeki count’u hatırlar ve her çağrıda artırır: 1 sonra 2."
+  },
+  {
+    "id": 20,
+    "title": "20. `count` neden silinmedi?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Global olduğu için" },
+      { "label": "B", "text": "`var` olduğu için" },
+      { "label": "C", "text": "İç fonksiyon onu kullandığı için" },
+      { "label": "D", "text": "JavaScript bug’ı" }
+    ],
+    "answer": "C",
+    "explain": "İç fonksiyon `count`’a referans tuttuğu için GC onu temizlemez."
+  },
+  {
+    "id": 22,
+    "title": "22. Aşağıdakilerden hangisi closure’a örnektir?",
+    "lang": "javascript",
+    "options": [
+      {
+        "label": "A",
+        "code": "function a() {\n  let x = 1;\n}"
+      },
+      {
+        "label": "B",
+        "code": "function a() {\n  let x = 1;\n  return function () {\n    console.log(x);\n  };\n}"
+      },
+      {
+        "label": "C",
+        "code": "let x = 1;\nconsole.log(x);"
+      },
+      {
+        "label": "D",
+        "code": "function a(x) {\n  console.log(x);\n}"
+      }
+    ],
+    "answer": "B",
+    "explain": "İç fonksiyon dışarı dönüyor ve dıştaki x’i hatırlıyor → closure."
+  },
+  {
+    "id": 23,
+    "title": "23. Closure hangi kavramla doğrudan ilişkilidir?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Hoisting" },
+      { "label": "B", "text": "Scope" },
+      { "label": "C", "text": "Prototype" },
+      { "label": "D", "text": "Event loop" }
+    ],
+    "answer": "B",
+    "explain": "Closure, lexical scope mantığıyla çalışır."
+  },
+  {
+    "id": 24,
+    "title": "24. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "function makeAdder(x) {\n  return function (y) {\n    return x + y;\n  };\n}\n\nconst add3 = makeAdder(3);\nadd3(4);",
+    "options": [
+      { "label": "A", "text": "3" },
+      { "label": "B", "text": "4" },
+      { "label": "C", "text": "7" },
+      { "label": "D", "text": "undefined" }
+    ],
+    "answer": "C",
+    "explain": "add3 fonksiyonu x=3’ü closure ile hatırlar; 3+4=7."
+  },
+  {
+    "id": 25,
+    "title": "25. Aşağıdakilerden hangisi DOĞRU?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Closure sadece arrow function’da olur" },
+      { "label": "B", "text": "Closure sadece `var` ile olur" },
+      { "label": "C", "text": "Closure hafızayı paylaşır" },
+      { "label": "D", "text": "Her fonksiyon çağrısı ayrı closure oluşturur" }
+    ],
+    "answer": "D",
+    "explain": "Her çağrı yeni bir lexical environment oluşturabilir; dolayısıyla ayrı closure oluşur."
+  },
+  {
+    "id": 26,
+    "title": "26. Bu kodda kaç farklı closure oluşur?",
+    "lang": "javascript",
+    "code": "function makeCounter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\n\nconst c1 = makeCounter();\nconst c2 = makeCounter();",
+    "options": [
+      { "label": "A", "text": "0" },
+      { "label": "B", "text": "1" },
+      { "label": "C", "text": "2" },
+      { "label": "D", "text": "Sonsuz" }
+    ],
+    "answer": "C",
+    "explain": "makeCounter iki kez çağrıldığı için iki ayrı closure oluşur."
+  },
+  {
+    "id": 27,
+    "title": "27. Aşağıdakilerden hangisi closure değildir?",
+    "lang": "javascript",
+    "options": [
+      {
+        "label": "A",
+        "code": "function a() {\n  let x = 1;\n  return () => x;\n}"
+      },
+      {
+        "label": "B",
+        "code": "function b() {\n  let y = 2;\n  console.log(y);\n}"
+      },
+      {
+        "label": "C",
+        "code": "function c() {\n  let z = 3;\n  return function () {\n    return z;\n  };\n}"
+      },
+      {
+        "label": "D",
+        "code": "function d() {\n  let k = 4;\n  return () => k * 2;\n}"
+      }
+    ],
+    "answer": "B",
+    "explain": "İç fonksiyon dışarı taşınmadığı için closure oluşmaz."
+  },
+  {
+    "id": 28,
+    "title": "28. Closure en çok hangi durumda kullanılır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Döngüleri hızlandırmak" },
+      { "label": "B", "text": "Global değişkenlerden kaçınmak" },
+      { "label": "C", "text": "DOM seçmek" },
+      { "label": "D", "text": "CSS yönetmek" }
+    ],
+    "answer": "B",
+    "explain": "State’i private tutmak ve global kirlenmesini önlemek için çok kullanılır."
+  },
+  {
+    "id": 29,
+    "title": "29. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "function test() {\n  let x = 10;\n  return function () {\n    console.log(x);\n  };\n}\n\nconst fn = test();\nfn();",
+    "options": ["A) undefined", "B) ReferenceError", "C) 10", "D) null"],
+    "answer": "C) 10",
+    "explain": "Closure sayesinde x hatırlanır."
+  },
+  {
+    "id": 30,
+    "title": "30. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "let a = 1;\n\nfunction outer() {\n  let b = 2;\n\n  function inner() {\n    let c = 3;\n    console.log(a, b, c);\n  }\n\n  inner();\n}\n\nouter();",
+    "options": ["A) 1 2 3", "B) ReferenceError", "C) undefined undefined undefined", "D) 1 undefined 3"],
+    "answer": "A) 1 2 3",
+    "explain": "inner, outer scope’taki a ve b’ye erişir."
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": 29,
+    "title": "29. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "function test() {\n  let x = 10;\n  return function () {\n    console.log(x);\n  };\n}\n\nconst fn = test();\nfn();",
+    "options": ["A) undefined", "B) ReferenceError", "C) 10", "D) null"],
+    "answer": "C) 10",
+    "explain": "(closure sayesinde x hatırlanır)"
+  },
+  {
+    "id": 30,
+    "title": "30. Bu kodun çıktısı nedir?",
+    "lang": "javascript",
+    "code": "let a = 1;\n\nfunction outer() {\n  let b = 2;\n\n  function inner() {\n    let c = 3;\n    console.log(a, b, c);\n  }\n\n  inner();\n}\n\nouter();",
+    "options": ["A) 1 2 3", "B) ReferenceError", "C) undefined undefined undefined", "D) 1 undefined 3"],
+    "answer": "A) 1 2 3",
+    "explain": "(inner, outer scope'taki a ve b'ye erişir)"
+  },
+  {
+    "id": 26,
+    "title": "26. Bu kodda kaç farklı closure oluşur?",
+    "lang": "javascript",
+    "code": "function makeCounter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\n\nconst c1 = makeCounter();\nconst c2 = makeCounter();",
+    "options": ["A) 0", "B) 1", "C) 2", "D) Sonsuz"],
+    "answer": "C) 2",
+    "explain": "(Her makeCounter() çağrısı ayrı bir closure üretir.)"
+  },
+  {
+    "id": 27,
+    "title": "27. Aşağıdakilerden hangisi closure değildir?",
+    "lang": "javascript",
+    "options": [
+      {
+        "label": "A",
+        "code": "function a() {\n  let x = 1;\n  return () => x;\n}"
+      },
+      {
+        "label": "B",
+        "code": "function b() {\n  let y = 2;\n  console.log(y);\n}"
+      },
+      {
+        "label": "C",
+        "code": "function c() {\n  let z = 3;\n  return function () {\n    return z;\n  };\n}"
+      },
+      {
+        "label": "D",
+        "code": "function d() {\n  let k = 4;\n  return () => k * 2;\n}"
+      }
+    ],
+    "answer": "B",
+    "explain": "(İç fonksiyon dışarı dönmediği için closure oluşmaz)"
+  },
+  {
+    "id": 28,
+    "title": "28. Closure en çok hangi durumda kullanılır?",
+    "lang": "javascript",
+    "options": [
+      { "label": "A", "text": "Döngüleri hızlandırmak" },
+      { "label": "B", "text": "Global değişkenlerden kaçınmak" },
+      { "label": "C", "text": "DOM seçmek" },
+      { "label": "D", "text": "CSS yönetmek" }
+    ],
+    "answer": "B",
+    "explain": "(Private state oluşturmak ve veri gizlemek için)"
+  }
+]

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Cards</title>
+
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Prism (syntax highlight) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Quiz Cards</h1>
+    <div class="controls">
+      <button id="prevBtn" type="button">← Önceki</button>
+      <button id="shuffleBtn" type="button">Karıştır</button>
+      <button id="nextBtn" type="button">Sonraki →</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="meta">
+      <span id="counter"></span>
+      <span class="hint">Kartı çevirmek için tıkla</span>
+    </div>
+
+    <section class="card" id="card" role="button" tabindex="0" aria-label="Soru kartı">
+      <!-- ✅ Progress bar -->
+      <div class="progress" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="face front" id="front"></div>
+      <div class="face back" id="back"></div>
+    </section>
+  </main>
+
+  <!-- Prism core + languages -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+
+  <script src="./app.js"></script>
+</body>
+</html>
