@@ -16,10 +16,37 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css">
 </head>
 <body>
+
   <header class="top">
     <h1>Quiz Cards</h1>
+
     <div class="controls">
       <button id="shuffleBtn" type="button">Karıştır</button>
+
+      <!-- ✅ Dosyalar -->
+      <div class="picker" id="picker" aria-label="Soru dosyası seçici">
+        <button id="pickBtn" type="button" class="pick-btn">Dosyalar</button>
+
+        <div class="pick-panel" id="pickPanel">
+          <label>
+            <input type="checkbox" value="4.1-question.json" checked>
+            4.1
+          </label>
+          <label>
+            <input type="checkbox" value="4.2-question.json" checked>
+            4.2
+          </label>
+          <label>
+            <input type="checkbox" value="4.3-question.json" checked>
+            4.3
+          </label>
+
+          <button id="applyBtn" type="button" class="apply-btn">
+            Seçilileri Yükle
+          </button>
+        </div>
+      </div>
+
       <button id="wrongsBtn" type="button">Yanlışlar</button>
       <button id="resetBtn" type="button">Sıfırla</button>
     </div>
@@ -31,8 +58,14 @@
       <span class="hint">Kartı çevirmek için tıkla</span>
     </div>
 
-    <section class="card" id="card" role="button" tabindex="0" aria-label="Soru kartı">
-      <!-- ✅ Progress bar -->
+    <section
+      class="card"
+      id="card"
+      role="button"
+      tabindex="0"
+      aria-label="Soru kartı"
+    >
+      <!-- Progress bar -->
       <div class="progress" aria-hidden="true">
         <div class="progress-fill" id="progressFill"></div>
       </div>

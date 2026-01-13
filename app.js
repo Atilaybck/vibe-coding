@@ -18,11 +18,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const wrongsBtn = document.getElementById("wrongsBtn");
   const resetBtn = document.getElementById("resetBtn");
 
+  // picker
+  const picker = document.getElementById("picker");
+  const pickBtn = document.getElementById("pickBtn");
+  const pickPanel = document.getElementById("pickPanel");
+  const applyBtn = document.getElementById("applyBtn");
+
   // progress
   const progressFill = document.getElementById("progressFill");
 
   // ✅ iki ayrı progress set’i
-  const answeredAll = new Set();    // all mod: index bazlı
+  const answeredAll = new Set(); // all mod: index bazlı
   const answeredWrongs = new Set(); // wrongs mod: _uid bazlı
 
   function escapeHtml(s = "") {
@@ -123,8 +129,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (mode === "all") {
       done = answeredAll.size;
     } else {
-      // wrongs modunda: aktif listedeki _uid’lerden kaç tanesi answeredWrongs’ta
-      done = active.reduce((acc, q) => acc + (answeredWrongs.has(q._uid) ? 1 : 0), 0);
+      done = active.reduce(
+        (acc, q) => acc + (answeredWrongs.has(q._uid) ? 1 : 0),
+        0
+      );
     }
 
     const pct = Math.round((done / total) * 100);
@@ -158,15 +166,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const q = active[index];
     const correctKey = getAnswerKey(q?.answer);
 
-    // all mod: index bazlı cevaplandı
     if (mode === "all") {
       answeredAll.add(index);
     } else {
-      // wrongs mod: _uid bazlı cevaplandı
       if (q?._uid) answeredWrongs.add(q._uid);
     }
 
-    // yanlışsa wrongSet'e ekle
     if (selectedKey && correctKey && selectedKey !== correctKey && q?._uid) {
       wrongSet.add(q._uid);
     }
@@ -225,7 +230,7 @@ ${renderQuestionCode(q)}
     card.classList.remove("flip");
 
     bindOptionClicks();
-    updateProgress(); // ✅ her render’da mode’a göre
+    updateProgress();
     fitCardHeight();
   }
 
@@ -251,7 +256,7 @@ ${renderQuestionCode(q)}
     render();
   }
 
-  function shuffle() {
+  function shuffleCurrent() {
     for (let i = questions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [questions[i], questions[j]] = [questions[j], questions[i]];
@@ -271,6 +276,49 @@ ${renderQuestionCode(q)}
     render();
   }
 
+  function getSelectedFiles() {
+    if (!picker) return ["4.1-question.json", "4.2-question.json", "4.3-question.json"];
+    return [...picker.querySelectorAll('input[type="checkbox"]:checked')].map(
+      (x) => x.value
+    );
+  }
+
+  async function loadSelectedQuestions() {
+    const files = getSelectedFiles();
+
+    if (!files.length) {
+      questions = [];
+      wrongSet.clear();
+      answeredAll.clear();
+      answeredWrongs.clear();
+      mode = "all";
+      index = 0;
+      if (progressFill) progressFill.style.width = "0%";
+      front.innerHTML = `<p class="q-title">En az 1 dosya seç</p><div class="muted">Dosyalar → seçim yap → Seçilileri Yükle</div>`;
+      back.innerHTML = "";
+      counter.textContent = "";
+      return;
+    }
+
+    const responses = await Promise.all(
+      files.map((f) => fetch(`./questions/${f}`))
+    );
+
+    responses.forEach((r, i) => {
+      if (!r.ok) throw new Error(`${files[i]} yüklenemedi`);
+    });
+
+    const jsons = await Promise.all(responses.map((r) => r.json()));
+    const merged = jsons.flat();
+
+    questions = merged.map((q, i) => ({
+      ...q,
+      _uid: `q_${i + 1}`,
+    }));
+
+    resetAll(); // selection sonrası her şeyi sıfırla + render
+  }
+
   // events
   card.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -283,7 +331,7 @@ ${renderQuestionCode(q)}
 
   shuffleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    shuffle();
+    shuffleCurrent();
   });
 
   wrongsBtn.addEventListener("click", (e) => {
@@ -307,28 +355,41 @@ ${renderQuestionCode(q)}
     if (e.key === "r" || e.key === "R") randomNext();
   });
 
-  // load questions
+  // picker events
+  if (pickBtn && pickPanel) {
+    pickBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      pickPanel.classList.toggle("open");
+    });
+
+    document.addEventListener("click", () => {
+      pickPanel.classList.remove("open");
+    });
+
+    pickPanel.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  if (applyBtn) {
+    applyBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      try {
+        await loadSelectedQuestions();
+        if (pickPanel) pickPanel.classList.remove("open");
+      } catch (err) {
+        front.innerHTML = `<p class="q-title">Hata</p><div class="muted">${escapeHtml(
+          err.message
+        )}</div>`;
+        back.innerHTML = "";
+        console.error(err);
+      }
+    });
+  }
+
+  // initial load
   try {
-  const [res41, res42, res43] = await Promise.all([
-    fetch("./questions/4.1-question.json"),
-    fetch("./questions/4.2-question.json"),
-    fetch("./questions/4.3-question.json"),
-  ]);
-
-  if (!res41.ok) throw new Error("4.1-question.json yüklenemedi");
-  if (!res42.ok) throw new Error("4.2-question.json yüklenemedi");
-  if (!res43.ok) throw new Error("4.3-question.json yüklenemedi");
-
-  const q41 = await res41.json();
-  const q42 = await res42.json();
-  const q43 = await res43.json();
-
-  questions = [...q41, ...q42, ...q43].map((q, i) => ({
-    ...q,
-    _uid: `q_${i + 1}`,
-  }));
-
-  shuffle();
+    await loadSelectedQuestions();
   } catch (err) {
     front.innerHTML = `<p class="q-title">Hata</p><div class="muted">${escapeHtml(
       err.message
