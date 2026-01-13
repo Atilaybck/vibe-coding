@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "set": "4.1",
+    "question": "JavaScript’te fonksiyonun temel amacı nedir?",
+    "options": {
+      "A": "Kod çalıştırmayı durdurmak",
+      "B": "Tekrar kullanılabilir kod bloğu oluşturmak",
+      "C": "Değişken saklamak",
+      "D": "Belleği temizlemek"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "set": "4.1",
+    "question": "Aşağıdakilerden hangisi Function Declaration’dır?",
+    "options": {
+      "A": "`const sum = (a, b) => a + b`",
+      "B": "`let sum = function(a, b) {}`",
+      "C": "`function sum(a, b) {}`",
+      "D": "`sum(a, b) {}`"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 3,
+    "set": "4.1",
+    "question": "Function Declaration’ın en önemli özelliği hangisidir?",
+    "options": {
+      "A": "Daha kısa yazılır",
+      "B": "Hoisting vardır",
+      "C": "Daha hızlı çalışır",
+      "D": "Arrow function’dır"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 4,
+    "set": "4.1",
+    "question": "Function Expression için hangisi doğrudur?",
+    "options": {
+      "A": "Tanımlanmadan önce çağrılabilir",
+      "B": "Hoisting vardır",
+      "C": "Değişkene atanır",
+      "D": "Sadece arrow ile yazılır"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 5,
+    "set": "4.1",
+    "question": "Parametre nedir?",
+    "options": {
+      "A": "Fonksiyonun döndürdüğü değer",
+      "B": "Fonksiyonun aldığı dış veri",
+      "C": "Fonksiyonun adı",
+      "D": "Fonksiyonun bellekteki yeri"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 6,
+    "set": "4.1",
+    "question": "Aşağıdaki kodda parametre hangisidir?\n```js\nfunction sum(a, b) {\n  return a + b;\n}\n```",
+    "options": {
+      "A": "`sum`",
+      "B": "`return`",
+      "C": "`a` ve `b`",
+      "D": "`a + b`"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 7,
+    "set": "4.1",
+    "question": "`return` ifadesiyle ilgili hangisi doğrudur?",
+    "options": {
+      "A": "Fonksiyonun başında olmalı",
+      "B": "Fonksiyonu durdurur ve değer döndürür",
+      "C": "Zorunludur",
+      "D": "Sadece number döndürür"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 8,
+    "set": "4.1",
+    "question": "Bir fonksiyonda `return` yoksa ne döner?",
+    "options": {
+      "A": "`null`",
+      "B": "`false`",
+      "C": "`0`",
+      "D": "`undefined`"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 9,
+    "set": "4.1",
+    "question": "Default parametre ne işe yarar?",
+    "options": {
+      "A": "Parametreyi zorunlu yapar",
+      "B": "Parametre gönderilmezse varsayılan değer verir",
+      "C": "Parametreyi siler",
+      "D": "Return yerine geçer"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 10,
+    "set": "4.1",
+    "question": "Aşağıdakilerden hangisi doğru bir default parametre kullanımıdır?",
+    "options": {
+      "A": "`function greet(name: \"Ali\") {}`",
+      "B": "`function greet(name == \"Ali\") {}`",
+      "C": "`function greet(name = \"Ali\") {}`",
+      "D": "`function greet(\"Ali\") {}`"
+    },
+    "answer": "C"
+  }
+]
