@@ -1,4 +1,4 @@
-// app.js
+// app.js (swipe animasyonlu)
 document.addEventListener("DOMContentLoaded", async () => {
   let questions = [];
   let index = 0;
@@ -31,13 +31,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const answeredAll = new Set(); // all mod: index bazlı
   const answeredWrongs = new Set(); // wrongs mod: _uid bazlı
 
-  // ✅ swipe state
+  // ✅ swipe/drag state
+  let swiping = false;
   let touchStartX = 0;
   let touchStartY = 0;
-  let swiping = false;
+  let dragging = false;
+  let dxLive = 0;
 
-  const SWIPE_MIN_X = 40; // px
-  const SWIPE_MAX_Y = 80; // px
+  const SWIPE_MAX_Y = 80; // dikey scroll ise sayma
+  const SWIPE_TRIGGER_X = 110; // bırakınca geçiş eşiği
+  const SWIPE_START_X = 8; // drag başlatma
 
   function escapeHtml(s = "") {
     return String(s)
@@ -237,6 +240,12 @@ ${renderQuestionCode(q)}
     flipped = false;
     card.classList.remove("flip");
 
+    // swipe sonrası kalmış inline stiller varsa temizle
+    card.style.transition = "";
+    card.style.transform = "";
+    card.style.opacity = "";
+    card.style.willChange = "";
+
     bindOptionClicks();
     updateProgress();
     fitCardHeight();
@@ -291,7 +300,8 @@ ${renderQuestionCode(q)}
   }
 
   function getSelectedFiles() {
-    if (!picker) return ["4.1-question.json", "4.2-question.json", "4.3-question.json"];
+    if (!picker)
+      return ["4.1-question.json", "4.2-question.json", "4.3-question.json"];
     return [...picker.querySelectorAll('input[type="checkbox"]:checked')].map(
       (x) => x.value
     );
@@ -331,10 +341,58 @@ ${renderQuestionCode(q)}
     resetAll(); // selection sonrası her şeyi sıfırla + render
   }
 
+  // ===== Swipe anim helpers =====
+  function setCardTransform(dx) {
+    const rot = Math.max(-8, Math.min(8, dx / 18));
+    card.style.transform = `translateX(${dx}px) rotate(${rot}deg)`;
+    card.style.opacity = String(1 - Math.min(0.35, Math.abs(dx) / 600));
+  }
+
+  function resetCardTransform() {
+    card.style.transition = "transform 200ms ease, opacity 200ms ease";
+    card.style.transform = "";
+    card.style.opacity = "";
+    setTimeout(() => {
+      card.style.transition = "";
+    }, 220);
+  }
+
+  function flyOutAndGo(dir) {
+    // dir: -1 => sola (next), +1 => sağa (prev)
+    const flyX = dir * (window.innerWidth * 0.9);
+
+    card.style.transition = "transform 180ms ease, opacity 180ms ease";
+    card.style.transform = `translateX(${flyX}px) rotate(${dir * 10}deg)`;
+    card.style.opacity = "0";
+
+    setTimeout(() => {
+      // flip kapat
+      flipped = false;
+      card.classList.remove("flip");
+
+      // geçiş
+      if (dir === -1) next();
+      else prev();
+
+      // yeni kartı biraz offset ile getir
+      card.style.transition = "none";
+      card.style.transform = `translateX(${dir * -60}px)`;
+      card.style.opacity = "0";
+
+      requestAnimationFrame(() => {
+        card.style.transition = "transform 200ms ease, opacity 200ms ease";
+        card.style.transform = "";
+        card.style.opacity = "1";
+        setTimeout(() => {
+          card.style.transition = "";
+        }, 220);
+      });
+    }, 190);
+  }
+
   // events
   card.addEventListener("click", (e) => {
-    // swipe yaptıysak click flip olmasın
-    if (swiping) return;
+    if (swiping) return; // swipe yaptıysak click flip olmasın
     e.stopPropagation();
     toggleFlip();
   });
@@ -343,40 +401,65 @@ ${renderQuestionCode(q)}
     if (e.key === "Enter" || e.key === " ") toggleFlip();
   });
 
-  // ✅ swipe events (mobile)
+  // ✅ swipe + drag anim (mobile)
   card.addEventListener(
     "touchstart",
     (e) => {
       const t = e.touches[0];
       touchStartX = t.clientX;
       touchStartY = t.clientY;
+      dragging = false;
+      dxLive = 0;
       swiping = false;
+
+      card.style.willChange = "transform, opacity";
+    },
+    { passive: true }
+  );
+
+  card.addEventListener(
+    "touchmove",
+    (e) => {
+      const t = e.touches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+
+      // dikey scroll: bırak
+      if (!dragging) {
+        if (Math.abs(dy) > SWIPE_MAX_Y) return;
+        if (Math.abs(dx) < SWIPE_START_X) return;
+        dragging = true;
+      }
+
+      dxLive = dx;
+      card.style.transition = "none";
+      setCardTransform(dxLive);
     },
     { passive: true }
   );
 
   card.addEventListener(
     "touchend",
-    (e) => {
-      const t = e.changedTouches[0];
-      const dx = t.clientX - touchStartX;
-      const dy = t.clientY - touchStartY;
-
-      if (Math.abs(dx) >= SWIPE_MIN_X && Math.abs(dy) <= SWIPE_MAX_Y) {
-        swiping = true;
-
-        // flip kapat
-        flipped = false;
-        card.classList.remove("flip");
-
-        if (dx < 0) next(); // sola -> sonraki
-        else prev(); // sağa -> önceki
-
-        // click tetiklenirse hemen kapansın
-        setTimeout(() => {
-          swiping = false;
-        }, 0);
+    () => {
+      if (!dragging) {
+        card.style.willChange = "";
+        return;
       }
+
+      swiping = true;
+
+      if (Math.abs(dxLive) >= SWIPE_TRIGGER_X) {
+        const dir = dxLive < 0 ? -1 : 1;
+        flyOutAndGo(dir);
+      } else {
+        resetCardTransform();
+      }
+
+      card.style.willChange = "";
+
+      setTimeout(() => {
+        swiping = false;
+      }, 0);
     },
     { passive: true }
   );
