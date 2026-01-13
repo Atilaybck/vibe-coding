@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const answeredAll = new Set(); // all mod: index bazlı
   const answeredWrongs = new Set(); // wrongs mod: _uid bazlı
 
+  // ✅ swipe state
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let swiping = false;
+
+  const SWIPE_MIN_X = 40; // px
+  const SWIPE_MAX_Y = 80; // px
+
   function escapeHtml(s = "") {
     return String(s)
       .replaceAll("&", "&amp;")
@@ -246,6 +254,12 @@ ${renderQuestionCode(q)}
     render();
   }
 
+  function prev() {
+    const active = getActiveList();
+    index = (index - 1 + active.length) % active.length;
+    render();
+  }
+
   function randomNext() {
     const active = getActiveList();
     if (!active.length || active.length === 1) return;
@@ -300,9 +314,7 @@ ${renderQuestionCode(q)}
       return;
     }
 
-    const responses = await Promise.all(
-      files.map((f) => fetch(`./questions/${f}`))
-    );
+    const responses = await Promise.all(files.map((f) => fetch(`./questions/${f}`)));
 
     responses.forEach((r, i) => {
       if (!r.ok) throw new Error(`${files[i]} yüklenemedi`);
@@ -321,6 +333,8 @@ ${renderQuestionCode(q)}
 
   // events
   card.addEventListener("click", (e) => {
+    // swipe yaptıysak click flip olmasın
+    if (swiping) return;
     e.stopPropagation();
     toggleFlip();
   });
@@ -328,6 +342,44 @@ ${renderQuestionCode(q)}
   card.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") toggleFlip();
   });
+
+  // ✅ swipe events (mobile)
+  card.addEventListener(
+    "touchstart",
+    (e) => {
+      const t = e.touches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+      swiping = false;
+    },
+    { passive: true }
+  );
+
+  card.addEventListener(
+    "touchend",
+    (e) => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+
+      if (Math.abs(dx) >= SWIPE_MIN_X && Math.abs(dy) <= SWIPE_MAX_Y) {
+        swiping = true;
+
+        // flip kapat
+        flipped = false;
+        card.classList.remove("flip");
+
+        if (dx < 0) next(); // sola -> sonraki
+        else prev(); // sağa -> önceki
+
+        // click tetiklenirse hemen kapansın
+        setTimeout(() => {
+          swiping = false;
+        }, 0);
+      }
+    },
+    { passive: true }
+  );
 
   shuffleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -352,6 +404,7 @@ ${renderQuestionCode(q)}
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") next();
+    if (e.key === "ArrowLeft") prev();
     if (e.key === "r" || e.key === "R") randomNext();
   });
 
