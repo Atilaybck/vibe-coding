@@ -1,0 +1,133 @@
+[
+  {
+    "id": 1,
+    "title": "1. Aşağıdakilerden hangisi bir modülü dışa aktarmak için kullanılır?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "require()" },
+      { "label": "B", "text": "module.export" },
+      { "label": "C", "text": "module.exports" },
+      { "label": "D", "text": "import" }
+    ],
+    "answer": "C",
+    "explain": "CommonJS sisteminde modül dışa aktarmak için `module.exports` kullanılır."
+  },
+  {
+    "id": 2,
+    "title": "2. `require('./selam')` ifadesi ne işe yarar?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "Yeni dosya oluşturur" },
+      { "label": "B", "text": "Global değişken tanımlar" },
+      { "label": "C", "text": "Modül içindeki veriyi içeri alır" },
+      { "label": "D", "text": "Dosya siler" }
+    ],
+    "answer": "C",
+    "explain": "`require`, belirtilen dosyadaki export edilen veriyi içeri alır."
+  },
+  {
+    "id": 3,
+    "title": "3. Aşağıdakilerden hangisi CommonJS ile ilgili doğrudur?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "`import` ve `export` kullanır" },
+      { "label": "B", "text": "Sadece tarayıcıda çalışır" },
+      { "label": "C", "text": "`require` ve `module.exports` ile çalışır" },
+      { "label": "D", "text": "Sadece JSON dosyalarıyla çalışır" }
+    ],
+    "answer": "C",
+    "explain": "CommonJS, Node.js’te `require` ve `module.exports` kullanır."
+  },
+  {
+    "id": 4,
+    "title": "4. `__dirname` değişkeni neyi ifade eder?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "Dosyanın adı" },
+      { "label": "B", "text": "Proje adı" },
+      { "label": "C", "text": "Çalışan fonksiyon" },
+      { "label": "D", "text": "Dosyanın bulunduğu klasör" }
+    ],
+    "answer": "D",
+    "explain": "`__dirname`, çalışılan dosyanın bulunduğu klasör yolunu verir."
+  },
+  {
+    "id": 5,
+    "title": "5. `__filename` çıktısı aşağıdakilerden hangisi olabilir?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "app.js" },
+      { "label": "B", "text": "console.log" },
+      { "label": "C", "text": "C:\\Users\\user\\project\\app.js" },
+      { "label": "D", "text": "project-folder" }
+    ],
+    "answer": "C",
+    "explain": "`__filename`, dosyanın tam yolunu verir."
+  },
+  {
+    "id": 6,
+    "title": "6. `process.argv` ne işe yarar?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "Ortam değişkenlerini gösterir" },
+      { "label": "B", "text": "Dosya yolunu verir" },
+      { "label": "C", "text": "Komut satırı argümanlarını tutar" },
+      { "label": "D", "text": "Bellek bilgisini gösterir" }
+    ],
+    "answer": "C",
+    "explain": "`process.argv`, terminalden girilen argümanları dizi olarak tutar."
+  },
+  {
+    "id": 7,
+    "title": "7. `setTimeout` fonksiyonu ne zaman çalışır?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "Hemen çalışır" },
+      { "label": "B", "text": "Belirtilen süre boyunca sürekli çalışır" },
+      { "label": "C", "text": "Belirtilen süreden sonra bir kez çalışır" },
+      { "label": "D", "text": "Kod bloğunu durdurur" }
+    ],
+    "answer": "C",
+    "explain": "`setTimeout`, belirtilen süreden sonra yalnızca bir kez çalışır."
+  },
+  {
+    "id": 8,
+    "title": "8. Aşağıdaki kod ne zaman durur?",
+    "lang": "nodejs",
+    "code": "let i = 0;\nconst id = setInterval(() => {\n  i++;\n  if (i === 3) clearInterval(id);\n}, 1000);",
+    "options": [
+      { "label": "A", "text": "Hiç durmaz" },
+      { "label": "B", "text": "3 saniye sonra" },
+      { "label": "C", "text": "1 saniye sonra" },
+      { "label": "D", "text": "5 saniye sonra" }
+    ],
+    "answer": "B",
+    "explain": "Sayaç 3’e ulaştığında interval durur → yaklaşık 3 saniye."
+  },
+  {
+    "id": 9,
+    "title": "9. `clearInterval()` fonksiyonu ne işe yarar?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "Yeni zamanlayıcı başlatır" },
+      { "label": "B", "text": "Zamanı sıfırlar" },
+      { "label": "C", "text": "`setTimeout`'u durdurur" },
+      { "label": "D", "text": "`setInterval` ile başlatılan işlemi durdurur" }
+    ],
+    "answer": "D",
+    "explain": "`clearInterval`, `setInterval` ile başlatılan döngüyü durdurur."
+  },
+  {
+    "id": 10,
+    "title": "10. Aşağıdaki ifadelerden hangisi Node.js’e özgü bir global değişkendir?",
+    "lang": "nodejs",
+    "options": [
+      { "label": "A", "text": "document" },
+      { "label": "B", "text": "window" },
+      { "label": "C", "text": "__filename" },
+      { "label": "D", "text": "localStorage" }
+    ],
+    "answer": "C",
+    "explain": "`__filename`, Node.js ortamına özgü global bir değişkendir."
+  }
+]

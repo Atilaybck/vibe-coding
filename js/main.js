@@ -150,10 +150,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     function getSelectedFiles() {
         if (!selectors.picker)
             return [
-                "4-fonksiyon/4.1-fonksiyon-temelleri.json",
-                "4-fonksiyon/4.2-fonksiyon-yazim-sekilleri.json",
-                "4-fonksiyon/4.3-kapsam.json",
-                "4-fonksiyon/4.4-fonksiyon-icinde-fonksiyon.json"
+                "javascript-questions/4-fonksiyon/4.1-fonksiyon-temelleri.json",
+                "javascript-questions/4-fonksiyon/4.2-fonksiyon-yazim-sekilleri.json",
+                "javascript-questions/4-fonksiyon/4.3-kapsam.json",
+                "javascript-questions/4-fonksiyon/4.4-fonksiyon-icinde-fonksiyon.json"
             ];
         return [
             ...selectors.picker.querySelectorAll('input[type="checkbox"]:checked'),
