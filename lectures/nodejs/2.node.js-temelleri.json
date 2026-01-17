@@ -1,0 +1,207 @@
+### 2.1 `require` ve `module.exports` Kullanımı
+
+Node.js'te her `.js` dosyası başlı başına bir **modüldür**. Bu modüller sayesinde kodları parçalara ayırarak daha düzenli, okunabilir ve yeniden kullanılabilir hale getirebiliriz.
+
+**`module.exports`**
+
+Bir dosyada tanımlanan veri, fonksiyon veya sınıfı **başka dosyalarda kullanmak üzere dışa aktarmak** için kullanılır.
+
+**`require()`**
+
+Başka bir dosyada dışa aktarılmış olan içeriği **içeri almak** (import etmek) için kullanılır.
+
+**🧠 Örnek:**
+
+```jsx
+//selam.js
+
+function selamVer(isim) {
+  console.log(`Merhaba, ${isim}`);
+}
+
+module.exports = selamVer; // Fonksiyonu dışa aktarıyoruz
+```
+
+```jsx
+//app.js
+
+const selam = require('./selam'); // selam.js modülünü içeri alıyoruz
+selam('Atılay');
+```
+
+**Çıktı:** `Merhaba, Atılay`
+
+**Özet:**
+
+- `module.exports`: Dışa aktarma işlemi yapar.
+- `require()`: Dışarıdan modül alır.
+- Her `.js` dosyası bir modüldür.
+
+---
+
+### **2.2 CommonJS Mantığı**
+
+Node.js, modül sistemi olarak **CommonJS** yapısını kullanır. Bu sistem sayesinde farklı dosyalar (modüller) arasında veri/fonksiyon paylaşımı yapılabilir.
+
+**CommonJS Nedir?**
+
+CommonJS, JavaScript dosyalarının birbirine **bağımlı hale gelmesini ve modüler kod yazılmasını** sağlayan bir standarttır. Modülerden kastımız
+
+Node.js, CommonJS yapısını şu şekilde uygular:
+
+- Her dosya bir modüldür.
+- `module.exports` ile dışa aktarım yapılır.
+- `require()` ile başka modül içeri alınır.
+
+**Örnek:**
+
+```jsx
+//car.js
+
+const marka = 'Toyota';
+const model = 'Corolla';
+
+module.exports = { marka, model };
+```
+
+```jsx
+//app.js
+const car = require('./car');
+
+console.log(car.marka); // Toyota
+console.log(car.model); // Corolla
+```
+
+**Özet:**
+
+- CommonJS → `require` / `module.exports` tabanlı modül sistemi.
+- ES6 modüllerine göre farkı: `import`/`export` yerine `require`/`module.exports` kullanılır.
+- Node.js’in varsayılan modül sistemi budur.
+
+---
+
+### **2.3 `process`, `__dirname`, `__filename` Gibi Global Değişkenler**
+
+Node.js bazı özel global değişkenler sunar. Bunlar, herhangi bir dosyada **require etmeden doğrudan kullanılabilir**.
+
+**`process`**
+
+- Node.js süreci hakkında bilgi verir.
+- Ortam değişkenleri, çalışma dizini, çıkış kodları gibi işlemler için kullanılır.
+
+**Örnek:**
+
+```jsx
+console.log(process.env.NODE_ENV); // Ortam tipi (dev, prod vs.)
+//Örnek Çıktı: development
+
+//Uygulamanın hangi ortamda çalıştığını söylüyor
+// - development → geliştirme
+// - production → canlı ortam
+// - test → test
+
+console.log(process.argv); // Komut satırı argümanları
+```
+
+**`__dirname`**
+
+- Geçerli dosyanın bulunduğu **klasörün tam yolunu** verir.
+
+**Örnek:**
+
+```jsx
+console.log(__dirname);
+// Örn: C:\Users\Atılay\projeler\cloki
+```
+
+Örneğin serviceController.js dosyasına koyduk bu kodu diyelim:
+
+![image.png](attachment:b5490cd9-b9b9-4121-a16b-a8db7a2d6f40:image.png)
+
+terminalde bunu loglar:
+
+C:\Users\Pc\Desktop\clokiapp\cloki-app8 - Kopya\cloki-back\controllers
+
+**`__filename`**
+
+- Geçerli dosyanın **tam yolunu** verir.
+
+**Örnek:**
+
+```jsx
+console.log(__filename);
+// Örn: C:\Users\Atılay\projeler\cloki\app.js
+```
+
+serviceController.js dosyasına bu kodu koyduk diyelim. O zaman aşağıdaki bu log loglanır:
+
+C:\Users\Pc\Desktop\clokiapp\cloki-app8 - Kopya\cloki-back\controllers\serviceController.js
+
+---
+
+**Özet:**
+
+- `process`: Node süreciyle ilgili bilgi ve kontrol sağlar.
+- `__dirname`: Dosyanın bulunduğu klasörün tam yolu.
+- `__filename`: Dosyanın tam yolu.
+
+**NOT:**
+
+`dir` = **directory (klasör)** demektir.
+
+---
+
+### **2.4 `setTimeout`, `setInterval`, `clearInterval` Kullanımı**
+
+Node.js, zamanlama işlemleri için JavaScript’in tarayıcıdan aşina olunan zamanlayıcı fonksiyonlarını destekler. Bu fonksiyonlar **Node.js ile birlikte gelir**.
+
+**`setTimeout()`**
+
+Belirli bir süre sonra **bir kez** çalışacak kod bloğunu zamanlar.
+
+**Örnek:**
+
+```jsx
+setTimeout(() => {
+  console.log('2 saniye sonra çalıştı');
+}, 2000); // 2000 ms = 2 saniye
+```
+
+**`setInterval()`**
+
+Belirli aralıklarla **tekrar tekrar** çalışacak kod bloğunu zamanlar.
+
+**Örnek:**
+
+```jsx
+const intervalId = setInterval(() => {
+  console.log('Her 3 saniyede bir çalışır');
+}, 3000);
+```
+
+**`clearInterval()`**
+
+`setInterval()` ile başlatılan işlemi **durdurur**.
+
+**Örnek:**
+
+```jsx
+let sayac = 0;
+const id = setInterval(() => {
+  sayac++;
+  console.log(`Sayaç: ${sayac}`);
+  if (sayac === 5) {
+    clearInterval(id); // 5'e ulaşınca döngüyü durdur
+  }
+}, 1000);
+```
+
+---
+
+**Özet:**
+
+- `setTimeout(fn, ms)`: Belirli süre sonra **tek seferlik** çalıştırır.
+- `setInterval(fn, ms)`: Belirli aralıklarla **tekrar tekrar** çalıştırır.
+- `clearInterval(id)`: Döngüyü durdurur.
+
+---
