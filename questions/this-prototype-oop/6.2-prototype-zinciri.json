@@ -1,0 +1,254 @@
+[
+    {
+        "id": 1,
+        "title": "1. JavaScript’te prototype zinciri nedir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Fonksiyonların çağrılma sırası"
+            },
+            {
+                "label": "B",
+                "text": "Objelerin birbirine bağlandığı miras zinciri"
+            },
+            {
+                "label": "C",
+                "text": "Scope hiyerarşisi"
+            },
+            {
+                "label": "D",
+                "text": "Event loop yapısı"
+            }
+        ],
+        "answer": "B",
+        "explain": "Prototype zinciri, bir objede property bulunamazsa prototype üzerinden yukarı doğru aranmasıdır."
+    },
+    {
+        "id": 2,
+        "title": "2. Bir property bulunamazsa JavaScript hangi sırayı izler?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Global scope"
+            },
+            {
+                "label": "B",
+                "text": "Object"
+            },
+            {
+                "label": "C",
+                "text": "Prototype zinciri"
+            },
+            {
+                "label": "D",
+                "text": "Error fırlatır"
+            }
+        ],
+        "answer": "C",
+        "explain": "Önce objeye, sonra prototype zinciri boyunca yukarı bakılır."
+    },
+    {
+        "id": 3,
+        "title": "3. Prototype zinciri nerede biter?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Object"
+            },
+            {
+                "label": "B",
+                "text": "Object.prototype"
+            },
+            {
+                "label": "C",
+                "text": "null"
+            },
+            {
+                "label": "D",
+                "text": "undefined"
+            }
+        ],
+        "answer": "C",
+        "explain": "Object.prototype.__proto__ değeri null’dır; zincir burada biter."
+    },
+    {
+        "id": 4,
+        "title": "4. Aşağıdaki zincirlerden hangisi doğrudur?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "obj → null → Object.prototype"
+            },
+            {
+                "label": "B",
+                "text": "obj → Object.prototype → null"
+            },
+            {
+                "label": "C",
+                "text": "Object.prototype → obj → null"
+            },
+            {
+                "label": "D",
+                "text": "null → obj → Object.prototype"
+            }
+        ],
+        "answer": "B",
+        "explain": "Standart bir objenin prototype zinciri bu şekildedir."
+    },
+    {
+        "id": 5,
+        "title": "5. `hasOwnProperty` neyi kontrol eder?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Prototype’taki property’yi"
+            },
+            {
+                "label": "B",
+                "text": "Global değişkeni"
+            },
+            {
+                "label": "C",
+                "text": "Sadece objenin kendisini"
+            },
+            {
+                "label": "D",
+                "text": "Function scope’u"
+            }
+        ],
+        "answer": "C",
+        "explain": "Sadece objenin kendi property’lerini kontrol eder."
+    },
+    {
+        "id": 6,
+        "title": "6. `Object.create(parent)` ne yapar?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "parent’ı kopyalar"
+            },
+            {
+                "label": "B",
+                "text": "Yeni boş obje oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "parent’ı prototype yapar"
+            },
+            {
+                "label": "D",
+                "text": "parent’ı siler"
+            }
+        ],
+        "answer": "C",
+        "explain": "Oluşturulan objenin prototype’ı parent olur."
+    },
+    {
+        "id": 7,
+        "title": "7. Aşağıdaki kodun çıktısı nedir?",
+        "lang": "javascript",
+        "code": "const a = { x: 1 };\nconst b = Object.create(a);\nconsole.log(b.x);",
+        "options": [
+            {
+                "label": "A",
+                "text": "undefined"
+            },
+            {
+                "label": "B",
+                "text": "null"
+            },
+            {
+                "label": "C",
+                "text": "1"
+            },
+            {
+                "label": "D",
+                "text": "Hata"
+            }
+        ],
+        "answer": "C",
+        "explain": "b.x bulunamaz, prototype olan a’dan alınır."
+    },
+    {
+        "id": 8,
+        "title": "8. Prototype zinciri neden performansı etkileyebilir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Her zaman yavaştır"
+            },
+            {
+                "label": "B",
+                "text": "Derin zincirde arama uzar"
+            },
+            {
+                "label": "C",
+                "text": "GC çalışmaz"
+            },
+            {
+                "label": "D",
+                "text": "Scope bozulur"
+            }
+        ],
+        "answer": "B",
+        "explain": "Property yukarı doğru arandıkça lookup maliyeti artar."
+    },
+    {
+        "id": 9,
+        "title": "9. Aşağıdaki kodda `toString` nereden gelir?",
+        "lang": "javascript",
+        "code": "const obj = {};\nobj.toString();",
+        "options": [
+            {
+                "label": "A",
+                "text": "obj"
+            },
+            {
+                "label": "B",
+                "text": "Object.prototype"
+            },
+            {
+                "label": "C",
+                "text": "Global scope"
+            },
+            {
+                "label": "D",
+                "text": "Function.prototype"
+            }
+        ],
+        "answer": "B",
+        "explain": "`toString`, Object.prototype üzerinden gelir."
+    },
+    {
+        "id": 10,
+        "title": "10. Prototype zinciri ile inheritance arasındaki ilişki nedir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Aynı şey değildir"
+            },
+            {
+                "label": "B",
+                "text": "Inheritance prototype zinciriyle sağlanır"
+            },
+            {
+                "label": "C",
+                "text": "Sadece class’larda geçerlidir"
+            },
+            {
+                "label": "D",
+                "text": "Sadece fonksiyonlarda çalışır"
+            }
+        ],
+        "answer": "B",
+        "explain": "JavaScript’te kalıtım, prototype zinciri üzerinden çalışır."
+    }
+]
