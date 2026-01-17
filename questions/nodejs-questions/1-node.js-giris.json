@@ -4,10 +4,22 @@
     "title": "1. Aşağıdakilerden hangisi bir modülü dışa aktarmak için kullanılır?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "require()" },
-      { "label": "B", "text": "module.export" },
-      { "label": "C", "text": "module.exports" },
-      { "label": "D", "text": "import" }
+      {
+        "label": "A",
+        "text": "require()"
+      },
+      {
+        "label": "B",
+        "text": "module.export"
+      },
+      {
+        "label": "C",
+        "text": "module.exports"
+      },
+      {
+        "label": "D",
+        "text": "import"
+      }
     ],
     "answer": "C",
     "explain": "CommonJS sisteminde modül dışa aktarmak için `module.exports` kullanılır."
@@ -17,10 +29,22 @@
     "title": "2. `require('./selam')` ifadesi ne işe yarar?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "Yeni dosya oluşturur" },
-      { "label": "B", "text": "Global değişken tanımlar" },
-      { "label": "C", "text": "Modül içindeki veriyi içeri alır" },
-      { "label": "D", "text": "Dosya siler" }
+      {
+        "label": "A",
+        "text": "Yeni dosya oluşturur"
+      },
+      {
+        "label": "B",
+        "text": "Global değişken tanımlar"
+      },
+      {
+        "label": "C",
+        "text": "Modül içindeki veriyi içeri alır"
+      },
+      {
+        "label": "D",
+        "text": "Dosya siler"
+      }
     ],
     "answer": "C",
     "explain": "`require`, belirtilen dosyadaki export edilen veriyi içeri alır."
@@ -30,10 +54,22 @@
     "title": "3. Aşağıdakilerden hangisi CommonJS ile ilgili doğrudur?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "`import` ve `export` kullanır" },
-      { "label": "B", "text": "Sadece tarayıcıda çalışır" },
-      { "label": "C", "text": "`require` ve `module.exports` ile çalışır" },
-      { "label": "D", "text": "Sadece JSON dosyalarıyla çalışır" }
+      {
+        "label": "A",
+        "text": "`import` ve `export` kullanır"
+      },
+      {
+        "label": "B",
+        "text": "Sadece tarayıcıda çalışır"
+      },
+      {
+        "label": "C",
+        "text": "`require` ve `module.exports` ile çalışır"
+      },
+      {
+        "label": "D",
+        "text": "Sadece JSON dosyalarıyla çalışır"
+      }
     ],
     "answer": "C",
     "explain": "CommonJS, Node.js’te `require` ve `module.exports` kullanır."
@@ -43,10 +79,22 @@
     "title": "4. `__dirname` değişkeni neyi ifade eder?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "Dosyanın adı" },
-      { "label": "B", "text": "Proje adı" },
-      { "label": "C", "text": "Çalışan fonksiyon" },
-      { "label": "D", "text": "Dosyanın bulunduğu klasör" }
+      {
+        "label": "A",
+        "text": "Dosyanın adı"
+      },
+      {
+        "label": "B",
+        "text": "Proje adı"
+      },
+      {
+        "label": "C",
+        "text": "Çalışan fonksiyon"
+      },
+      {
+        "label": "D",
+        "text": "Dosyanın bulunduğu klasör"
+      }
     ],
     "answer": "D",
     "explain": "`__dirname`, çalışılan dosyanın bulunduğu klasör yolunu verir."
@@ -56,10 +104,22 @@
     "title": "5. `__filename` çıktısı aşağıdakilerden hangisi olabilir?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "app.js" },
-      { "label": "B", "text": "console.log" },
-      { "label": "C", "text": "C:\\Users\\user\\project\\app.js" },
-      { "label": "D", "text": "project-folder" }
+      {
+        "label": "A",
+        "text": "app.js"
+      },
+      {
+        "label": "B",
+        "text": "console.log"
+      },
+      {
+        "label": "C",
+        "text": "C:\\Users\\user\\project\\app.js"
+      },
+      {
+        "label": "D",
+        "text": "project-folder"
+      }
     ],
     "answer": "C",
     "explain": "`__filename`, dosyanın tam yolunu verir."
@@ -69,10 +129,22 @@
     "title": "6. `process.argv` ne işe yarar?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "Ortam değişkenlerini gösterir" },
-      { "label": "B", "text": "Dosya yolunu verir" },
-      { "label": "C", "text": "Komut satırı argümanlarını tutar" },
-      { "label": "D", "text": "Bellek bilgisini gösterir" }
+      {
+        "label": "A",
+        "text": "Ortam değişkenlerini gösterir"
+      },
+      {
+        "label": "B",
+        "text": "Dosya yolunu verir"
+      },
+      {
+        "label": "C",
+        "text": "Komut satırı argümanlarını tutar"
+      },
+      {
+        "label": "D",
+        "text": "Bellek bilgisini gösterir"
+      }
     ],
     "answer": "C",
     "explain": "`process.argv`, terminalden girilen argümanları dizi olarak tutar."
@@ -82,10 +154,22 @@
     "title": "7. `setTimeout` fonksiyonu ne zaman çalışır?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "Hemen çalışır" },
-      { "label": "B", "text": "Belirtilen süre boyunca sürekli çalışır" },
-      { "label": "C", "text": "Belirtilen süreden sonra bir kez çalışır" },
-      { "label": "D", "text": "Kod bloğunu durdurur" }
+      {
+        "label": "A",
+        "text": "Hemen çalışır"
+      },
+      {
+        "label": "B",
+        "text": "Belirtilen süre boyunca sürekli çalışır"
+      },
+      {
+        "label": "C",
+        "text": "Belirtilen süreden sonra bir kez çalışır"
+      },
+      {
+        "label": "D",
+        "text": "Kod bloğunu durdurur"
+      }
     ],
     "answer": "C",
     "explain": "`setTimeout`, belirtilen süreden sonra yalnızca bir kez çalışır."
@@ -96,10 +180,22 @@
     "lang": "nodejs",
     "code": "let i = 0;\nconst id = setInterval(() => {\n  i++;\n  if (i === 3) clearInterval(id);\n}, 1000);",
     "options": [
-      { "label": "A", "text": "Hiç durmaz" },
-      { "label": "B", "text": "3 saniye sonra" },
-      { "label": "C", "text": "1 saniye sonra" },
-      { "label": "D", "text": "5 saniye sonra" }
+      {
+        "label": "A",
+        "text": "Hiç durmaz"
+      },
+      {
+        "label": "B",
+        "text": "3 saniye sonra"
+      },
+      {
+        "label": "C",
+        "text": "1 saniye sonra"
+      },
+      {
+        "label": "D",
+        "text": "5 saniye sonra"
+      }
     ],
     "answer": "B",
     "explain": "Sayaç 3’e ulaştığında interval durur → yaklaşık 3 saniye."
@@ -109,10 +205,22 @@
     "title": "9. `clearInterval()` fonksiyonu ne işe yarar?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "Yeni zamanlayıcı başlatır" },
-      { "label": "B", "text": "Zamanı sıfırlar" },
-      { "label": "C", "text": "`setTimeout`'u durdurur" },
-      { "label": "D", "text": "`setInterval` ile başlatılan işlemi durdurur" }
+      {
+        "label": "A",
+        "text": "Yeni zamanlayıcı başlatır"
+      },
+      {
+        "label": "B",
+        "text": "Zamanı sıfırlar"
+      },
+      {
+        "label": "C",
+        "text": "`setTimeout`'u durdurur"
+      },
+      {
+        "label": "D",
+        "text": "`setInterval` ile başlatılan işlemi durdurur"
+      }
     ],
     "answer": "D",
     "explain": "`clearInterval`, `setInterval` ile başlatılan döngüyü durdurur."
@@ -122,12 +230,275 @@
     "title": "10. Aşağıdaki ifadelerden hangisi Node.js’e özgü bir global değişkendir?",
     "lang": "nodejs",
     "options": [
-      { "label": "A", "text": "document" },
-      { "label": "B", "text": "window" },
-      { "label": "C", "text": "__filename" },
-      { "label": "D", "text": "localStorage" }
+      {
+        "label": "A",
+        "text": "document"
+      },
+      {
+        "label": "B",
+        "text": "window"
+      },
+      {
+        "label": "C",
+        "text": "__filename"
+      },
+      {
+        "label": "D",
+        "text": "localStorage"
+      }
     ],
     "answer": "C",
     "explain": "`__filename`, Node.js ortamına özgü global bir değişkendir."
+  },
+  {
+    "id": 11,
+    "title": "11. Node.js'te modüllerin temel amacı nedir?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Kodu parçalara ayırarak düzenli ve yeniden kullanılabilir kılmak"
+      },
+      {
+        "label": "B",
+        "text": "Sadece CSS dosyalarını yüklemek"
+      },
+      {
+        "label": "C",
+        "text": "HTML yapılarını oluşturmak"
+      },
+      {
+        "label": "D",
+        "text": "İnternet hızını artırmak"
+      }
+    ],
+    "answer": "A",
+    "explain": "Modüller, kodun modüler, okunabilir ve yönetilebilir olmasını sağlar."
+  },
+  {
+    "id": 12,
+    "title": "12. `process.env.NODE_ENV` genellikle neyi belirtir?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "İşlemci hızını"
+      },
+      {
+        "label": "B",
+        "text": "Uygulamanın çalıştığı ortamı (dev, prod vs.)"
+      },
+      {
+        "label": "C",
+        "text": "Dosya sistemini"
+      },
+      {
+        "label": "D",
+        "text": "Bağlantı protokolünü"
+      }
+    ],
+    "answer": "B",
+    "explain": "NODE_ENV, uygulamanın geliştirme mi yoksa canlı ortamda mı çalıştığını anlamak için yaygın olarak kullanılır."
+  },
+  {
+    "id": 13,
+    "title": "13. Aşağıdaki kodun çıktısı nedir?",
+    "lang": "nodejs",
+    "code": "setTimeout(() => {\n  console.log('A');\n}, 0);\nconsole.log('B');",
+    "options": [
+      {
+        "label": "A",
+        "text": "A sonra B"
+      },
+      {
+        "label": "B",
+        "text": "B sonra A"
+      },
+      {
+        "label": "C",
+        "text": "Sadece A"
+      },
+      {
+        "label": "D",
+        "text": "Hata verir"
+      }
+    ],
+    "answer": "B",
+    "explain": "setTimeout 0 olsa bile asenkron olduğu için Event Loop'a girer, önce senkron olan 'B' çalışır."
+  },
+  {
+    "id": 14,
+    "title": "14. `require` fonksiyonuna verilen yol `./` ile başlıyorsa ne anlama gelir?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Global bir modüldür"
+      },
+      {
+        "label": "B",
+        "text": "npm paketidir"
+      },
+      {
+        "label": "C",
+        "text": "Aynı klasördeki yerel bir dosyadır"
+      },
+      {
+        "label": "D",
+        "text": "Kök dizinden başlar"
+      }
+    ],
+    "answer": "C",
+    "explain": "`./`, bulunulan klasörü temsil eder."
+  },
+  {
+    "id": 15,
+    "title": "15. Bir dosyada `module.exports = { isim: 'Ali' }` yazıyorsa, içeride nasıl kullanılır?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "const data = require('./dosya'); console.log(data.isim);"
+      },
+      {
+        "label": "B",
+        "text": "import Ali from './dosya';"
+      },
+      {
+        "label": "C",
+        "text": "fetch('./dosya').isim;"
+      },
+      {
+        "label": "D",
+        "text": "window.isim;"
+      }
+    ],
+    "answer": "A",
+    "explain": "Export edilen nesne `require` ile alınır ve içindeki özelliklere erişilir."
+  },
+  {
+    "id": 16,
+    "title": "16. Node.js global değişkenleri için hangisi doğrudur?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Sadece `global.` ön ekiyle erişilebilir"
+      },
+      {
+        "label": "B",
+        "text": "Require etmeden doğrudan kullanılabilirler"
+      },
+      {
+        "label": "C",
+        "text": "Sadece tarayıcıda çalışırlar"
+      },
+      {
+        "label": "D",
+        "text": "Kullanmak için npm install gerekir"
+      }
+    ],
+    "answer": "B",
+    "explain": "Global değişkenler (örneğin __dirname) her modülde doğrudan erişilebilirdir."
+  },
+  {
+    "id": 17,
+    "title": "17. `process.argv` dizisinin ilk iki elemanı genellikle nedir?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Kullanıcı adı ve şifre"
+      },
+      {
+        "label": "B",
+        "text": "node yolu ve çalışan dosya yolu"
+      },
+      {
+        "label": "C",
+        "text": "Dosya içeriği ve boyutu"
+      },
+      {
+        "label": "D",
+        "text": "Bağlantı portu ve IP"
+      }
+    ],
+    "answer": "B",
+    "explain": "İlk eleman node.exe yolu, ikinci eleman ise çalıştırılan script'in yoludur."
+  },
+  {
+    "id": 18,
+    "title": "18. `setInterval` tarafından döndürülen değer nedir?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Sürenin kendisi"
+      },
+      {
+        "label": "B",
+        "text": "Tanımlanan fonksiyon"
+      },
+      {
+        "label": "C",
+        "text": "Zamanlayıcıyı durdurmak için kullanılan bir ID"
+      },
+      {
+        "label": "D",
+        "text": "Bir boolean değer"
+      }
+    ],
+    "answer": "C",
+    "explain": "Bu ID, `clearInterval` fonksiyonuna verilerek döngü durdurulur."
+  },
+  {
+    "id": 19,
+    "title": "19. Node.js'te neden `window` veya `document` kullanamayız?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "Node.js bir tarayıcı ortamı değildir"
+      },
+      {
+        "label": "B",
+        "text": "C++ ile yazılmadıkları için"
+      },
+      {
+        "label": "C",
+        "text": "Ücretli oldukları için"
+      },
+      {
+        "label": "D",
+        "text": "Aslında kullanabiliriz"
+      }
+    ],
+    "answer": "A",
+    "explain": "Window ve Document DOM unsurlarıdır, Node.js ise sunucu taraflı bir çalışma ortamıdır."
+  },
+  {
+    "id": 20,
+    "title": "20. `__dirname` çıktısı neye benzer?",
+    "lang": "nodejs",
+    "options": [
+      {
+        "label": "A",
+        "text": "app.js"
+      },
+      {
+        "label": "B",
+        "text": "/home/user/project/controllers"
+      },
+      {
+        "label": "C",
+        "text": "C:\\Windows\\System32"
+      },
+      {
+        "label": "D",
+        "text": "Node.js Version v18"
+      }
+    ],
+    "answer": "B",
+    "explain": "__dirname, dosyanın bulunduğu klasörün tam mutlak yolunu verir."
   }
 ]

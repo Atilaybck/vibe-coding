@@ -1,0 +1,1083 @@
+[
+    {
+        "id": 1,
+        "title": "1. `fs.readFileSync` metodu ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya yazar"
+            },
+            {
+                "label": "B",
+                "text": "Dosyayı senkron şekilde okur"
+            },
+            {
+                "label": "C",
+                "text": "Klasör oluşturur"
+            },
+            {
+                "label": "D",
+                "text": "Dosyayı siler"
+            }
+        ],
+        "answer": "B",
+        "explain": "`fs.readFileSync`, belirtilen dosyayı senkron (eşzamanlı) olarak okur."
+    },
+    {
+        "id": 2,
+        "title": "2. Aşağıdakilerden hangisi `fs` modülünü içe aktarmak için doğrudur?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "import fs from 'fs'"
+            },
+            {
+                "label": "B",
+                "text": "const fs = require('fs')"
+            },
+            {
+                "label": "C",
+                "text": "let fs = fetch('fs')"
+            },
+            {
+                "label": "D",
+                "text": "fs = import('fs')"
+            }
+        ],
+        "answer": "B",
+        "explain": "CommonJS yapısında yerleşik modüller `require` ile içe aktarılır."
+    },
+    {
+        "id": 3,
+        "title": "3. `fs.writeFile('dosya.txt', 'Merhaba', cb)` fonksiyonunda `cb` neyi temsil eder?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Yazılacak veriyi"
+            },
+            {
+                "label": "B",
+                "text": "Dosya adını"
+            },
+            {
+                "label": "C",
+                "text": "Callback fonksiyonu"
+            },
+            {
+                "label": "D",
+                "text": "Dosya türünü"
+            }
+        ],
+        "answer": "C",
+        "explain": "`cb` (callback), işlem tamamlandığında çağrılan fonksiyonu temsil eder."
+    },
+    {
+        "id": 4,
+        "title": "4. `fs.writeFileSync('dosya.txt', 'İçerik')` ne yapar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya içeriğini okur"
+            },
+            {
+                "label": "B",
+                "text": "Dosya oluşturur ve içine yazar"
+            },
+            {
+                "label": "C",
+                "text": "Dosyayı siler"
+            },
+            {
+                "label": "D",
+                "text": "Dosya adını değiştirir"
+            }
+        ],
+        "answer": "B",
+        "explain": "`fs.writeFileSync`, belirtilen veriyi dosyaya senkron olarak yazar; dosya yoksa oluşturur."
+    },
+    {
+        "id": 5,
+        "title": "5. Hangi `fs` metodu senkron değildir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "fs.readFile"
+            },
+            {
+                "label": "B",
+                "text": "fs.readFileSync"
+            },
+            {
+                "label": "C",
+                "text": "fs.writeFileSync"
+            },
+            {
+                "label": "D",
+                "text": "fs.existsSync"
+            }
+        ],
+        "answer": "A",
+        "explain": "`fs.readFile` asenkron (eşzamansız) bir metottur, diğerleri ise `Sync` takısı ile senkron çalışır."
+    },
+    {
+        "id": 6,
+        "title": "6. `fs.unlinkSync('a.txt')` fonksiyonu ne yapar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya oluşturur"
+            },
+            {
+                "label": "B",
+                "text": "Dosyayı yeniden adlandırır"
+            },
+            {
+                "label": "C",
+                "text": "Dosyayı siler"
+            },
+            {
+                "label": "D",
+                "text": "Dosya okur"
+            }
+        ],
+        "answer": "C",
+        "explain": "`fs.unlinkSync`, belirtilen dosyayı senkron olarak sistemden siler."
+    },
+    {
+        "id": 7,
+        "title": "7. `fs.appendFile('log.txt', 'Yeni kayıt\\n', cb)` ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosyayı baştan yazar"
+            },
+            {
+                "label": "B",
+                "text": "Dosyanın başına veri ekler"
+            },
+            {
+                "label": "C",
+                "text": "Dosyanın sonuna veri ekler"
+            },
+            {
+                "label": "D",
+                "text": "Dosyayı siler"
+            }
+        ],
+        "answer": "C",
+        "explain": "`fs.appendFile`, mevcut veriyi silmeden dosyanın sonuna yeni veri ekler."
+    },
+    {
+        "id": 8,
+        "title": "8. Aşağıdaki hangi fonksiyon senkron değildir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "fs.existsSync()"
+            },
+            {
+                "label": "B",
+                "text": "fs.readFile()"
+            },
+            {
+                "label": "C",
+                "text": "fs.renameSync()"
+            },
+            {
+                "label": "D",
+                "text": "fs.writeFileSync()"
+            }
+        ],
+        "answer": "B",
+        "explain": "`fs.readFile`, callback or promise tabanlı çalışan asenkron bir fonksiyondur."
+    },
+    {
+        "id": 9,
+        "title": "9. `fs.mkdirSync('klasor')` fonksiyonu ne yapar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya oluşturur"
+            },
+            {
+                "label": "B",
+                "text": "Klasör oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "Dosya okur"
+            },
+            {
+                "label": "D",
+                "text": "Dosya siler"
+            }
+        ],
+        "answer": "B",
+        "explain": "`fs.mkdirSync` (make directory), belirtilen isimde yeni bir klasör oluşturur."
+    },
+    {
+        "id": 10,
+        "title": "10. `fs.readdirSync('./')` fonksiyonu ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya siler"
+            },
+            {
+                "label": "B",
+                "text": "Dizin oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "Mevcut klasördeki dosya ve klasörleri listeler"
+            },
+            {
+                "label": "D",
+                "text": "Dosya yazar"
+            }
+        ],
+        "answer": "C",
+        "explain": "`fs.readdirSync`, belirtilen dizin içerisindeki tüm öğelerin listesini döner."
+    },
+    {
+        "id": 11,
+        "title": "11. `path.join('klasor', 'dosya.txt')` ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosyayı siler"
+            },
+            {
+                "label": "B",
+                "text": "Klasör oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "Dosya içeriğini okur"
+            },
+            {
+                "label": "D",
+                "text": "Dosya yolu oluşturur"
+            }
+        ],
+        "answer": "D",
+        "explain": "`path.join`, verilen parçaları o anki işletim sistemine uygun şekilde birleştirerek geçerli bir dosya yolu oluşturur."
+    },
+    {
+        "id": 12,
+        "title": "12. `path.basename('/users/atilay/dosya.pdf')` çıktısı nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "/users/atilay/"
+            },
+            {
+                "label": "B",
+                "text": "dosya"
+            },
+            {
+                "label": "C",
+                "text": "dosya.pdf"
+            },
+            {
+                "label": "D",
+                "text": ".pdf"
+            }
+        ],
+        "answer": "C",
+        "explain": "`path.basename`, bir yolun en sonundaki dosya veya klasör adını döndürür."
+    },
+    {
+        "id": 13,
+        "title": "13. `path.extname('foto.png')` çıktısı nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": ".png"
+            },
+            {
+                "label": "B",
+                "text": "foto"
+            },
+            {
+                "label": "C",
+                "text": "png"
+            },
+            {
+                "label": "D",
+                "text": "foto.png"
+            }
+        ],
+        "answer": "A",
+        "explain": "`path.extname`, dosyanın uzantısını (nokta dahil) döndürür."
+    },
+    {
+        "id": 14,
+        "title": "14. `path.dirname('/app/data/deneme.txt')` çıktısı nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "/app/data"
+            },
+            {
+                "label": "B",
+                "text": "deneme.txt"
+            },
+            {
+                "label": "C",
+                "text": "/app/data/deneme.txt"
+            },
+            {
+                "label": "D",
+                "text": ".txt"
+            }
+        ],
+        "answer": "A",
+        "explain": "`path.dirname`, dosyanın içinde bulunduğu klasörün yolunu verir."
+    },
+    {
+        "id": 15,
+        "title": "15. `path` modülünün en büyük avantajı nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya boyutunu gösterir"
+            },
+            {
+                "label": "B",
+                "text": "Her sistemde doğru dosya yolu oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "Kodun daha hızlı çalışmasını sağlar"
+            },
+            {
+                "label": "D",
+                "text": "Veritabanı bağlantısı kurar"
+            }
+        ],
+        "answer": "B",
+        "explain": "`path` modülü, Windows (\\\\) ve Linux/Mac (/) arasındaki yol ayracı farklarını otomatik yönetir."
+    },
+    {
+        "id": 16,
+        "title": "16. `__dirname` neyi ifade eder?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Ana dizini"
+            },
+            {
+                "label": "B",
+                "text": "Bulunduğun dosyanın klasör yolunu"
+            },
+            {
+                "label": "C",
+                "text": "root klasörünü"
+            },
+            {
+                "label": "D",
+                "text": "Çalıştırılan komutu"
+            }
+        ],
+        "answer": "B",
+        "explain": "`__dirname`, çalıştırılan JavaScript dosyasının bulunduğu klasörün mutlak yolunu verir."
+    },
+    {
+        "id": 17,
+        "title": "17. `path.join(__dirname, 'veriler', 'data.json')` ifadesinde kaç parça birleştirilir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "2"
+            },
+            {
+                "label": "B",
+                "text": "3"
+            },
+            {
+                "label": "C",
+                "text": "4"
+            },
+            {
+                "label": "D",
+                "text": "5"
+            }
+        ],
+        "answer": "B",
+        "explain": "Bu ifade; `__dirname`, `'veriler'` ve `'data.json'` olmak üzere 3 farklı parçayı birleştirir."
+    },
+    {
+        "id": 18,
+        "title": "18. Aşağıdaki ifadelerden hangisi `path` modülüne ait değildir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "path.basename()"
+            },
+            {
+                "label": "B",
+                "text": "path.resolve()"
+            },
+            {
+                "label": "C",
+                "text": "path.delete()"
+            },
+            {
+                "label": "D",
+                "text": "path.extname()"
+            }
+        ],
+        "answer": "C",
+        "explain": "`path` modülü yolları işlemek içindir; dosya silme işlemi `fs` modülü ile yapılır."
+    },
+    {
+        "id": 19,
+        "title": "19. `path.join()` kullanmak neden daha güvenlidir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya verisini şifreler"
+            },
+            {
+                "label": "B",
+                "text": "Platform farklarını ortadan kaldırır"
+            },
+            {
+                "label": "C",
+                "text": "Kodun daha okunabilir olmasını sağlar"
+            },
+            {
+                "label": "D",
+                "text": "Dosyaları yedekler"
+            }
+        ],
+        "answer": "B",
+        "explain": "İşletim sistemleri arasındaki `/` ve `\\` farklarını otomatik yönettiği için platformlar arası uyumluluk sağlar."
+    },
+    {
+        "id": 20,
+        "title": "20. Aşağıdakilerden hangisi `path` modülünü doğru şekilde içe aktarır?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "const path = require('path')"
+            },
+            {
+                "label": "B",
+                "text": "import path from 'fs'"
+            },
+            {
+                "label": "C",
+                "text": "path = fetch('path')"
+            },
+            {
+                "label": "D",
+                "text": "require('path').default"
+            }
+        ],
+        "answer": "A",
+        "explain": "Yerleşik modüller Node.js'de `require` kullanılarak bir değişkene atanır."
+    },
+    {
+        "id": 21,
+        "title": "21. `http` modülü ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Veritabanı bağlantısı sağlar"
+            },
+            {
+                "label": "B",
+                "text": "Web sunucusu oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "Dosya yollarını birleştirir"
+            },
+            {
+                "label": "D",
+                "text": "UI tasarımı yapar"
+            }
+        ],
+        "answer": "B",
+        "explain": "`http` modülü, Node.js üzerinden ağ isteklerini yönetmek ve sunucu kurmak için kullanılır."
+    },
+    {
+        "id": 22,
+        "title": "22. `http.createServer()` fonksiyonu ne yapar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya yazar"
+            },
+            {
+                "label": "B",
+                "text": "Yeni bir klasör oluşturur"
+            },
+            {
+                "label": "C",
+                "text": "HTTP sunucusu oluşturur"
+            },
+            {
+                "label": "D",
+                "text": "URL yönlendirir"
+            }
+        ],
+        "answer": "C",
+        "explain": "Yeni bir sunucu örneği oluşturur ve gelen istekleri dinleyebilecek hale getirir."
+    },
+    {
+        "id": 23,
+        "title": "23. `res.end('Sunucu çalışıyor!')` ifadesi ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Sunucuyu kapatır"
+            },
+            {
+                "label": "B",
+                "text": "İstemciye yanıt gönderir ve işlemi bitirir"
+            },
+            {
+                "label": "C",
+                "text": "Yeni bir port açar"
+            },
+            {
+                "label": "D",
+                "text": "Dosya okur"
+            }
+        ],
+        "answer": "B",
+        "explain": "`res.end`, sunucunun cevabını sonlandırır ve veriyi istemciye (tarayıcıya vb.) iletir."
+    },
+    {
+        "id": 24,
+        "title": "24. Aşağıdakilerden hangisi gelen HTTP isteğini temsil eder?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "res"
+            },
+            {
+                "label": "B",
+                "text": "url"
+            },
+            {
+                "label": "C",
+                "text": "req"
+            },
+            {
+                "label": "D",
+                "text": "body"
+            }
+        ],
+        "answer": "C",
+        "explain": "`req` (request), istemciden gelen istek bilgilerini (URL, header vb.) taşır."
+    },
+    {
+        "id": 25,
+        "title": "25. Tarayıcıda `http://localhost:3000` yazıldığında sunucu hangi portta dinliyor demektir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "8080"
+            },
+            {
+                "label": "B",
+                "text": "5000"
+            },
+            {
+                "label": "C",
+                "text": "80"
+            },
+            {
+                "label": "D",
+                "text": "3000"
+            }
+        ],
+        "answer": "D",
+        "explain": "Adres çubuğundaki iki noktadan sonra gelen sayı (3000), sunucunun dinlediği portu belirtir."
+    },
+    {
+        "id": 26,
+        "title": "26. `res.writeHead(200, { 'Content-Type': 'application/json' })` ne işe yarar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Başarısız yanıt gönderir"
+            },
+            {
+                "label": "B",
+                "text": "Dosya uzantısını belirler"
+            },
+            {
+                "label": "C",
+                "text": "Başlık bilgisi ile yanıtı hazırlar"
+            },
+            {
+                "label": "D",
+                "text": "JSON verisi gönderir"
+            }
+        ],
+        "answer": "C",
+        "explain": "Yanıtın durum kodunu (200) ve içeriğin türünü (JSON) belirten HTTP başlıklarını ayarlar."
+    },
+    {
+        "id": 27,
+        "title": "27. Kullanıcı `http://localhost:3000/hakkinda` adresine giderse ve bu yol tanımlıysa ne olur?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "404 hatası döner"
+            },
+            {
+                "label": "B",
+                "text": "JSON verisi gönderilir"
+            },
+            {
+                "label": "C",
+                "text": "Sayfa yönlendirilir"
+            },
+            {
+                "label": "D",
+                "text": "'Hakkında Sayfası' yazısı gösterilir"
+            }
+        ],
+        "answer": "D",
+        "explain": "Sunucu tarafında bu yol (route) kontrol ediliyorsa, kullanıcıya o sayfaya ait içerik gösterilir."
+    },
+    {
+        "id": 28,
+        "title": "28. Aşağıdakilerden hangisi HTTP durumu kodlarından biridir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "123"
+            },
+            {
+                "label": "B",
+                "text": "200"
+            },
+            {
+                "label": "C",
+                "text": "800"
+            },
+            {
+                "label": "D",
+                "text": "77"
+            }
+        ],
+        "answer": "B",
+        "explain": "200 (Başarılı), 404 (Bulunamadı) gibi standart kodlar HTTP durumlarını temsil eder."
+    },
+    {
+        "id": 29,
+        "title": "29. `req.url === '/'` kontrolü neyi ifade eder?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Anasayfa isteği"
+            },
+            {
+                "label": "B",
+                "text": "Hakkında sayfası"
+            },
+            {
+                "label": "C",
+                "text": "JSON isteği"
+            },
+            {
+                "label": "D",
+                "text": "Dosya indirme isteği"
+            }
+        ],
+        "answer": "A",
+        "explain": "Kök dizin (`/`), web sitelerinde genellikle anasayfayı temsil eder."
+    },
+    {
+        "id": 30,
+        "title": "30. Express kullanılmadan `http` modülü ile yapılan routing (yönlendirme) nasıl yapılır?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "res.send() kullanarak"
+            },
+            {
+                "label": "B",
+                "text": "fs.readFile() ile"
+            },
+            {
+                "label": "C",
+                "text": "req.url değerine göre kontrol ederek"
+            },
+            {
+                "label": "D",
+                "text": "path.join() ile"
+            }
+        ],
+        "answer": "C",
+        "explain": "Düz Node.js HTTP sunucularında, istenen sayfa `req.url` üzerinden `if/else` veya `switch` ile belirlenir."
+    },
+    {
+        "id": 31,
+        "title": "31. Aşağıdaki kod ne yapar?",
+        "code": "const http = require('http');\n\nhttp.createServer((req, res) => {\n  res.end('Merhaba');\n}).listen(3000);",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Konsola \"Merhaba\" yazar"
+            },
+            {
+                "label": "B",
+                "text": "Tarayıcıdan gelen isteğe cevap verip \"Merhaba\" döner"
+            },
+            {
+                "label": "C",
+                "text": "Dosya oluşturur"
+            },
+            {
+                "label": "D",
+                "text": "Veritabanına bağlanır"
+            }
+        ],
+        "answer": "B",
+        "explain": "3000 portunda bir sunucu başlatır ve gelen her isteğe 'Merhaba' yanıtını verir."
+    },
+    {
+        "id": 32,
+        "title": "32. Bu kodun çıktısı ne olur?",
+        "code": "const http = require('http');\n\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Sunucu aktif');\n});\n\nserver.listen(4000);",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Sunucu aktif (port 4000'de tarayıcıya döner)"
+            },
+            {
+                "label": "B",
+                "text": "Konsola Sunucu aktif yazar"
+            },
+            {
+                "label": "C",
+                "text": "Sunucu kapalı hatası verir"
+            },
+            {
+                "label": "D",
+                "text": "fs modülünü çalıştırır"
+            }
+        ],
+        "answer": "A",
+        "explain": "4000 portunu dinleyen sunucu, bağlanan kişiye 'Sunucu aktif' metnini döndürür."
+    },
+    {
+        "id": 33,
+        "title": "33. Aşağıdaki kodda eksik olan nedir?",
+        "code": "const http = require('http');\n\nhttp.createServer((req, res) => {\n  res.end('OK');\n});",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "http modülü eksik"
+            },
+            {
+                "label": "B",
+                "text": "res.writeHead() eksik"
+            },
+            {
+                "label": "C",
+                "text": "listen() metodu eksik"
+            },
+            {
+                "label": "D",
+                "text": "require() hatalı"
+            }
+        ],
+        "answer": "C",
+        "explain": "Sunucu tanımlanmış olsa bile `.listen(port)` metodu çağrılmazsa sunucu aktifleşip istekleri dinleyemez."
+    },
+    {
+        "id": 34,
+        "title": "34. Bu kodda hangi sayfa isteği kontrol ediliyor?",
+        "code": "if (req.url === '/iletisim') {\n  res.end('İletişim Sayfası');\n}",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Anasayfa"
+            },
+            {
+                "label": "B",
+                "text": "Hakkında"
+            },
+            {
+                "label": "C",
+                "text": "İletişim"
+            },
+            {
+                "label": "D",
+                "text": "404"
+            }
+        ],
+        "answer": "C",
+        "explain": "URL '/iletisim' olduğunda bu blok çalışır, yani iletişim sayfası isteği yanıtlanır."
+    },
+    {
+        "id": 35,
+        "title": "35. `events` modülünün temel amacı nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dosya işlemleri yapmak"
+            },
+            {
+                "label": "B",
+                "text": "HTTP sunucusu kurmak"
+            },
+            {
+                "label": "C",
+                "text": "Olay dinlemek ve tetiklemek"
+            },
+            {
+                "label": "D",
+                "text": "Web sayfası oluşturmak"
+            }
+        ],
+        "answer": "C",
+        "explain": "`events` modülü, Node.js'in olay bazlı (event-driven) mimarisinin temelidir."
+    },
+    {
+        "id": 36,
+        "title": "36. `EventEmitter` sınıfı hangi modülden gelir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "fs"
+            },
+            {
+                "label": "B",
+                "text": "http"
+            },
+            {
+                "label": "C",
+                "text": "events"
+            },
+            {
+                "label": "D",
+                "text": "stream"
+            }
+        ],
+        "answer": "C",
+        "explain": "`EventEmitter`, `events` modülü içerisinde yer alan, olayları yöneten classesdir."
+    },
+    {
+        "id": 37,
+        "title": "37. Aşağıdakilerden hangisi bir olayı dinlemek için kullanılır?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "emit()"
+            },
+            {
+                "label": "B",
+                "text": "require()"
+            },
+            {
+                "label": "C",
+                "text": "listen()"
+            },
+            {
+                "label": "D",
+                "text": "on()"
+            }
+        ],
+        "answer": "D",
+        "explain": "`.on()` metodu, belirli bir olay gerçekleştiğinde çalışacak bir listener (dinleyici) tanımlar."
+    },
+    {
+        "id": 38,
+        "title": "38. Aşağıdaki kod ne yapar?",
+        "code": "olayYayici.emit('giris', 'admin');",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Sunucuyu başlatır"
+            },
+            {
+                "label": "B",
+                "text": "'giris' olayını tetikler ve 'admin' parametresini yollar"
+            },
+            {
+                "label": "C",
+                "text": "'admin' adında bir olay tanımlar"
+            },
+            {
+                "label": "D",
+                "text": "Konsolu temizler"
+            }
+        ],
+        "answer": "B",
+        "explain": "`emit`, belirtilen olayı ateşler (trigger) ve yanında veri taşıyabilir."
+    },
+    {
+        "id": 39,
+        "title": "39. Aşağıdaki olaylardan hangisi özel (kendi tanımladığımız) bir olay olabilir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "request"
+            },
+            {
+                "label": "B",
+                "text": "selamla"
+            },
+            {
+                "label": "C",
+                "text": "error"
+            },
+            {
+                "label": "D",
+                "text": "close"
+            }
+        ],
+        "answer": "B",
+        "explain": "Node.js yerleşik olayları (`error`, `close` vb.) dışında her türlü isimde özel olay oluşturulabilir."
+    },
+    {
+        "id": 40,
+        "title": "40. Bir olay dinleyicisi tanımlamak için hangisi doğrudur?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "event.on('olay', callback)"
+            },
+            {
+                "label": "B",
+                "text": "event.listen('olay', callback)"
+            },
+            {
+                "label": "C",
+                "text": "event.emit('olay', callback)"
+            },
+            {
+                "label": "D",
+                "text": "event.catch('olay', callback)"
+            }
+        ],
+        "answer": "A",
+        "explain": "Doğru prototip: `obj.on('eventID', listenerFunction)` şeklindedir."
+    },
+    {
+        "id": 41,
+        "title": "41. Aşağıdaki kod çalıştırıldığında ne olur?",
+        "code": "const EventEmitter = require('events');\nconst emitter = new EventEmitter();\nemitter.on('ping', () => console.log('pong'));",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "'pong' yazısı anında basılır"
+            },
+            {
+                "label": "B",
+                "text": "Hata verir"
+            },
+            {
+                "label": "C",
+                "text": "Hiçbir şey olmaz"
+            },
+            {
+                "label": "D",
+                "text": "'ping' olayı silinir"
+            }
+        ],
+        "answer": "C",
+        "explain": "Olay dinleyici tanımlanmış ancak olay `emit` ile tetiklenmediği için fonksiyon çalışmaz."
+    },
+    {
+        "id": 42,
+        "title": "42. Aşağıdakilerden hangisi olaylara veri göndermeyi sağlar?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "on()"
+            },
+            {
+                "label": "B",
+                "text": "emit()"
+            },
+            {
+                "label": "C",
+                "text": "setTimeout()"
+            },
+            {
+                "label": "D",
+                "text": "process.argv"
+            }
+        ],
+        "answer": "B",
+        "explain": "`emit('olayAdi', veri)` yapısı, veriyi dinleyici fonksiyona parametre olarak aktarır."
+    },
+    {
+        "id": 43,
+        "title": "43. `EventEmitter` ile çok sayıda olayı yönetmenin faydası nedir?",
+        "lang": "nodejs",
+        "options": [
+            {
+                "label": "A",
+                "text": "Kod karmaşasını artırır"
+            },
+            {
+                "label": "B",
+                "text": "Senkron çalışmayı zorlaştırır"
+            },
+            {
+                "label": "C",
+                "text": "Olay bazlı yapı kurarak sistemi kontrol etmeyi kolaylaştırır"
+            },
+            {
+                "label": "D",
+                "text": "Sunucu performansını düşürür"
+            }
+        ],
+        "answer": "C",
+        "explain": "Modüler, genişletilebilir ve organize bir kod yapısı oluşturulmasını sağlar."
+    }
+]
