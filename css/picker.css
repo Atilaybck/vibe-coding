@@ -21,15 +21,30 @@
     position: absolute;
     top: 52px;
     right: 0;
-    min-width: 190px;
+    min-width: 240px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 12px;
+    padding: 16px;
     display: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     z-index: 50;
     backdrop-filter: blur(10px);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.picker-group {
+    margin-bottom: 20px;
+}
+
+.picker-group h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
 
 .pick-panel.open {
@@ -40,10 +55,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 8px;
     cursor: pointer;
     color: var(--text);
+    padding: 4px 0;
+    transition: opacity 0.2s;
+}
+
+.pick-panel label:hover {
+    opacity: 0.8;
 }
 
 .pick-panel input[type="checkbox"] {

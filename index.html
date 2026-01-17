@@ -48,18 +48,27 @@
         <button id="pickBtn" type="button" class="pick-btn">Dosyalar</button>
 
         <div class="pick-panel" id="pickPanel">
-          <label>
-            <input type="checkbox" value="4.1-question.json" checked>
-            4.1
-          </label>
-          <label>
-            <input type="checkbox" value="4.2-question.json" checked>
-            4.2
-          </label>
-          <label>
-            <input type="checkbox" value="4.3-question.json" checked>
-            4.3
-          </label>
+          <div class="picker-group">
+            <h4>Fonksiyonlar</h4>
+            <label><input type="checkbox" value="4-fonksiyon/4.1-fonksiyon-temelleri.json" checked> 4.1 Temeller</label>
+            <label><input type="checkbox" value="4-fonksiyon/4.2-fonksiyon-yazim-sekilleri.json" checked> 4.2 Yazım
+              Şekilleri</label>
+            <label><input type="checkbox" value="4-fonksiyon/4.3-kapsam.json" checked> 4.3 Kapsam (Scope)</label>
+            <label><input type="checkbox" value="4-fonksiyon/4.4-fonksiyon-icinde-fonksiyon.json" checked> 4.4 İç İçe
+              Fonksiyonlar</label>
+          </div>
+
+          <div class="picker-group">
+            <h4>Array & Object</h4>
+            <label><input type="checkbox" value="5-array-object/5.1-array-temelleri.json"> 5.1 Array Temelleri</label>
+            <label><input type="checkbox" value="5-array-object/5.2-array-metodları.json"> 5.2 Array Metodları</label>
+            <label><input type="checkbox" value="5-array-object/5.3-object-temelleri.json"> 5.3 Object Temelleri</label>
+          </div>
+
+          <div class="picker-group">
+            <h4>OOP & this</h4>
+            <label><input type="checkbox" value="this-prototype-oop/6.1-this-mantigi.json"> 6.1 this Mantığı</label>
+          </div>
 
           <button id="applyBtn" type="button" class="apply-btn">
             Seçilileri Yükle

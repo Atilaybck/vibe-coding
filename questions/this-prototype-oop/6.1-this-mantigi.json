@@ -1,0 +1,482 @@
+[
+    {
+        "id": 1,
+        "title": "1. `this` neye göre belirlenir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Nerede yazıldığına"
+            },
+            {
+                "label": "B",
+                "text": "Fonksiyon adına"
+            },
+            {
+                "label": "C",
+                "text": "Nasıl çağrıldığına"
+            },
+            {
+                "label": "D",
+                "text": "Değişken adına"
+            }
+        ],
+        "answer": "C",
+        "explain": "`this`, fonksiyonun nerede yazıldığından çok nasıl çağrıldığına göre belirlenir."
+    },
+    {
+        "id": 2,
+        "title": "2. Aşağıdakilerden hangisi object method çağrısıdır?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "test()"
+            },
+            {
+                "label": "B",
+                "text": "say()"
+            },
+            {
+                "label": "C",
+                "text": "user.say()"
+            },
+            {
+                "label": "D",
+                "text": "call(say)"
+            }
+        ],
+        "answer": "C",
+        "explain": "Method çağrısı `obje.method()` şeklindedir: `user.say()`."
+    },
+    {
+        "id": 3,
+        "title": "3. Object method içinde `this` neyi gösterir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Global object"
+            },
+            {
+                "label": "B",
+                "text": "Fonksiyonun kendisi"
+            },
+            {
+                "label": "C",
+                "text": "Çağıran obje"
+            },
+            {
+                "label": "D",
+                "text": "undefined"
+            }
+        ],
+        "answer": "C",
+        "explain": "Method çağrısında `this`, metodu çağıran objeyi gösterir."
+    },
+    {
+        "id": 4,
+        "title": "4. Düz fonksiyon strict mode’da çağrılırsa `this` ne olur?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "window"
+            },
+            {
+                "label": "B",
+                "text": "{}"
+            },
+            {
+                "label": "C",
+                "text": "null"
+            },
+            {
+                "label": "D",
+                "text": "undefined"
+            }
+        ],
+        "answer": "D",
+        "explain": "Strict mode’da normal fonksiyon çağrısında `this` → `undefined` olur."
+    },
+    {
+        "id": 5,
+        "title": "5. Arrow function ile ilgili hangisi doğrudur?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Kendi `this`’ini oluşturur"
+            },
+            {
+                "label": "B",
+                "text": "`bind` ile çalışmaz"
+            },
+            {
+                "label": "C",
+                "text": "Dış scope’tan `this` alır"
+            },
+            {
+                "label": "D",
+                "text": "Sadece objede kullanılır"
+            }
+        ],
+        "answer": "C",
+        "explain": "Arrow function `this`’i lexically (dış scope’tan) alır."
+    },
+    {
+        "id": 6,
+        "title": "6. Aşağıdakilerden hangisi `call`’ın özelliğidir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Sonra çalıştırır"
+            },
+            {
+                "label": "B",
+                "text": "Argümanları dizi alır"
+            },
+            {
+                "label": "C",
+                "text": "`this`’i sabitler"
+            },
+            {
+                "label": "D",
+                "text": "Anında çalıştırır"
+            }
+        ],
+        "answer": "D",
+        "explain": "`call`, fonksiyonu hemen çalıştırır ve `this`’i ayarlar."
+    },
+    {
+        "id": 7,
+        "title": "7. `call` ile parametreler nasıl verilir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Dizi"
+            },
+            {
+                "label": "B",
+                "text": "Tek tek"
+            },
+            {
+                "label": "C",
+                "text": "Object"
+            },
+            {
+                "label": "D",
+                "text": "Callback"
+            }
+        ],
+        "answer": "B",
+        "explain": "`call(thisArg, a, b, c...)` şeklinde parametreler tek tek verilir."
+    },
+    {
+        "id": 8,
+        "title": "8. `apply` ile `call` arasındaki fark nedir?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Çalışma zamanı"
+            },
+            {
+                "label": "B",
+                "text": "`this` davranışı"
+            },
+            {
+                "label": "C",
+                "text": "Parametre alma şekli"
+            },
+            {
+                "label": "D",
+                "text": "Fonksiyon tipi"
+            }
+        ],
+        "answer": "C",
+        "explain": "Fark argüman vermede: `call` tek tek, `apply` dizi ile alır."
+    },
+    {
+        "id": 9,
+        "title": "9. Hangisi doğru kullanımdır?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "fn.apply(obj, a, b)"
+            },
+            {
+                "label": "B",
+                "text": "fn.call(obj, [a, b])"
+            },
+            {
+                "label": "C",
+                "text": "fn.apply(obj, [a, b])"
+            },
+            {
+                "label": "D",
+                "text": "fn.bind(obj, a, b)"
+            }
+        ],
+        "answer": "C",
+        "explain": "`apply` argümanları dizi olarak alır: `fn.apply(obj, [a, b])`."
+    },
+    {
+        "id": 10,
+        "title": "10. `bind` ne yapar?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Fonksiyonu hemen çalıştırır"
+            },
+            {
+                "label": "B",
+                "text": "`this`’i değiştirir"
+            },
+            {
+                "label": "C",
+                "text": "Yeni fonksiyon döndürür"
+            },
+            {
+                "label": "D",
+                "text": "Parametreleri siler"
+            }
+        ],
+        "answer": "C",
+        "explain": "`bind`, `this`’i sabitleyen yeni bir fonksiyon döndürür (hemen çalıştırmaz)."
+    },
+    {
+        "id": 11,
+        "title": "11. `bind` edilen `this` sonradan değişir mi?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "Evet"
+            },
+            {
+                "label": "B",
+                "text": "Hayır"
+            },
+            {
+                "label": "C",
+                "text": "Strict mode’da değişir"
+            },
+            {
+                "label": "D",
+                "text": "Arrow function’da değişir"
+            }
+        ],
+        "answer": "B",
+        "explain": "`bind` ile sabitlenen `this` sonradan değişmez."
+    },
+    {
+        "id": 13,
+        "title": "13. `setTimeout` içinde `this`’i korumak için ne kullanılır?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "call"
+            },
+            {
+                "label": "B",
+                "text": "apply"
+            },
+            {
+                "label": "C",
+                "text": "bind"
+            },
+            {
+                "label": "D",
+                "text": "return"
+            }
+        ],
+        "answer": "C",
+        "explain": "`bind`, methodu objeye bağlayıp `this`’i korur."
+    },
+    {
+        "id": 14,
+        "title": "14. Hangisi hemen çalıştırmaz?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "call"
+            },
+            {
+                "label": "B",
+                "text": "apply"
+            },
+            {
+                "label": "C",
+                "text": "bind"
+            },
+            {
+                "label": "D",
+                "text": "invoke"
+            }
+        ],
+        "answer": "C",
+        "explain": "`bind` hemen çalıştırmaz; yeni fonksiyon döndürür."
+    },
+    {
+        "id": 15,
+        "title": "15. Doğru eşleşme hangisi?",
+        "lang": "javascript",
+        "options": [
+            {
+                "label": "A",
+                "text": "call → dizi"
+            },
+            {
+                "label": "B",
+                "text": "apply → tek tek"
+            },
+            {
+                "label": "C",
+                "text": "bind → anında"
+            },
+            {
+                "label": "D",
+                "text": "bind → sonra"
+            }
+        ],
+        "answer": "D",
+        "explain": "`bind` fonksiyonu bağlar ve sonra çağrılır."
+    },
+    {
+        "id": 16,
+        "title": "16. Aşağıdaki kodun çıktısı nedir?",
+        "lang": "javascript",
+        "code": "const user = {\n  name: \"Atılay\",\n  say() {\n    console.log(this.name);\n  }\n};\n\nuser.say();",
+        "options": [
+            {
+                "label": "A",
+                "text": "undefined"
+            },
+            {
+                "label": "B",
+                "text": "user"
+            },
+            {
+                "label": "C",
+                "text": "Atılay"
+            },
+            {
+                "label": "D",
+                "text": "Hata"
+            }
+        ],
+        "answer": "C",
+        "explain": "Method çağrısı `user.say()` olduğu için `this` → user, `this.name` → \"Atılay\"."
+    },
+    {
+        "id": 17,
+        "title": "17. Aşağıdaki kodun çıktısı nedir? (Strict mode AÇIK)",
+        "lang": "javascript",
+        "code": "function show() {\n  console.log(this);\n}\n\nshow();",
+        "options": [
+            {
+                "label": "A",
+                "text": "window"
+            },
+            {
+                "label": "B",
+                "text": "{}"
+            },
+            {
+                "label": "C",
+                "text": "null"
+            },
+            {
+                "label": "D",
+                "text": "undefined"
+            }
+        ],
+        "answer": "D",
+        "explain": "Strict mode’da düz fonksiyon çağrısında `this` → `undefined`."
+    },
+    {
+        "id": 18,
+        "title": "18. Aşağıdaki kodun çıktısı nedir?",
+        "lang": "javascript",
+        "code": "const obj = {\n  name: \"Cloki\",\n  say() {\n    console.log(this.name);\n  }\n};\n\nconst fn = obj.say;\nfn();",
+        "options": [
+            {
+                "label": "A",
+                "text": "Cloki"
+            },
+            {
+                "label": "B",
+                "text": "obj"
+            },
+            {
+                "label": "C",
+                "text": "undefined"
+            },
+            {
+                "label": "D",
+                "text": "Hata"
+            }
+        ],
+        "answer": "C",
+        "explain": "fn objeden koparılarak çağrıldığı için çağıran obje yok → strict mode’da `this` undefined olur."
+    },
+    {
+        "id": 19,
+        "title": "19. Aşağıdaki kodun çıktısı nedir?",
+        "lang": "javascript",
+        "code": "function greet(city) {\n  console.log(this.name + \" - \" + city);\n}\n\nconst user = { name: \"Atılay\" };\n\ngreet.apply(user, [\"Bandırma\"]);",
+        "options": [
+            {
+                "label": "A",
+                "text": "Atılay - Bandırma"
+            },
+            {
+                "label": "B",
+                "text": "undefined - Bandırma"
+            },
+            {
+                "label": "C",
+                "text": "Atılay - undefined"
+            },
+            {
+                "label": "D",
+                "text": "Hata"
+            }
+        ],
+        "answer": "A",
+        "explain": "`apply` ile `this` → user olur, argüman diziyle verilir → \"Atılay - Bandırma\"."
+    },
+    {
+        "id": 20,
+        "title": "20. Aşağıdaki kodun çıktısı nedir?",
+        "lang": "javascript",
+        "code": "const obj = {\n  name: \"Cloki\",\n  say() {\n    console.log(this.name);\n  }\n};\n\nsetTimeout(obj.say.bind(obj), 0);",
+        "options": [
+            {
+                "label": "A",
+                "text": "undefined"
+            },
+            {
+                "label": "B",
+                "text": "Cloki"
+            },
+            {
+                "label": "C",
+                "text": "obj"
+            },
+            {
+                "label": "D",
+                "text": "Hata"
+            }
+        ],
+        "answer": "B",
+        "explain": "`bind(obj)` sayesinde `this` korunur ve \"Cloki\" yazdırır."
+    }
+]

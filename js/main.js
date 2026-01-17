@@ -48,7 +48,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.addEventListener("click", (e) => {
         if (selectors.themeMenu) selectors.themeMenu.classList.remove("open");
-        if (selectors.pickPanel) selectors.pickPanel.classList.remove("open");
+
+        const isPickClick = e.target.closest("#pickPanel") || e.target.closest("#pickBtn");
+        if (selectors.pickPanel && !isPickClick) {
+            selectors.pickPanel.classList.remove("open");
+        }
 
         const isInteractive =
             e.target.closest("button") ||
@@ -145,7 +149,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function getSelectedFiles() {
         if (!selectors.picker)
-            return ["4.1-question.json", "4.2-question.json", "4.3-question.json"];
+            return [
+                "4-fonksiyon/4.1-fonksiyon-temelleri.json",
+                "4-fonksiyon/4.2-fonksiyon-yazim-sekilleri.json",
+                "4-fonksiyon/4.3-kapsam.json",
+                "4-fonksiyon/4.4-fonksiyon-icinde-fonksiyon.json"
+            ];
         return [
             ...selectors.picker.querySelectorAll('input[type="checkbox"]:checked'),
         ].map((x) => x.value);
