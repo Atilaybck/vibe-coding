@@ -1,0 +1,63 @@
+[data-theme="ocean"] {
+    --bg: #0c4a6e;
+    --surface: #075985;
+    --surface-hover: #0369a1;
+    --primary: #7dd3fc;
+    --accent: #38bdf8;
+}
+
+[data-theme="sunset"] {
+    --bg: #450a0a;
+    --surface: #7c2d12;
+    --surface-hover: #9a3412;
+    --primary: #fb923c;
+    --accent: #f472b6;
+}
+
+[data-theme="forest"] {
+    --bg: #064e3b;
+    --surface: #065f46;
+    --surface-hover: #047857;
+    --primary: #34d399;
+    --accent: #a7f3d0;
+}
+
+.theme-switcher {
+    position: relative;
+}
+
+.theme-menu {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    min-width: 120px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: var(--shadow);
+    z-index: 60;
+    backdrop-filter: blur(10px);
+}
+
+.theme-menu.open {
+    display: flex;
+}
+
+.theme-menu button {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    justify-content: flex-start;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+.theme-menu button:hover {
+    background: var(--surface-hover);
+    transform: none;
+}

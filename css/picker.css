@@ -1,0 +1,66 @@
+.picker {
+    position: relative;
+}
+
+.pick-btn {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: var(--font);
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pick-panel {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    min-width: 190px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    z-index: 50;
+    backdrop-filter: blur(10px);
+}
+
+.pick-panel.open {
+    display: block;
+}
+
+.pick-panel label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.pick-panel input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+}
+
+.apply-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0b1220;
+    color: var(--text);
+    cursor: pointer;
+    font-family: var(--font);
+    font-weight: 600;
+}
