@@ -1,0 +1,54 @@
+// js/config.js
+export const state = {
+    questions: [],
+    index: 0,
+    flipped: false,
+    locked: false,
+    mode: "all", // "all" | "wrongs"
+    wrongSet: new Set(),
+    answeredAll: new Set(),
+    answeredWrongs: new Set(),
+    monacoEditor: null,
+    currentQuestionCode: "",
+    questionStartTime: null,
+    analyticsData: {},
+    swiping: false,
+    touchStartX: 0,
+    touchStartY: 0,
+    dragging: false,
+    dxLive: 0,
+};
+
+export const selectors = {
+    card: document.getElementById("card"),
+    front: document.getElementById("front"),
+    back: document.getElementById("back"),
+    counter: document.getElementById("counter"),
+    shuffleBtn: document.getElementById("shuffleBtn"),
+    wrongsBtn: document.getElementById("wrongsBtn"),
+    resetBtn: document.getElementById("resetBtn"),
+    statsBtn: document.getElementById("statsBtn"),
+    analyticsBtn: document.getElementById("analyticsBtn"),
+    picker: document.getElementById("picker"),
+    pickBtn: document.getElementById("pickBtn"),
+    pickPanel: document.getElementById("pickPanel"),
+    applyBtn: document.getElementById("applyBtn"),
+    themeBtn: document.getElementById("themeBtn"),
+    themeMenu: document.getElementById("themeMenu"),
+    statsModal: document.getElementById("statsModal"),
+    closeStats: document.getElementById("closeStats"),
+    analyticsModal: document.getElementById("analyticsModal"),
+    closeAnalytics: document.getElementById("closeAnalytics"),
+    togglePlayground: document.getElementById("togglePlayground"),
+    codePlayground: document.getElementById("codePlayground"),
+    runCodeBtn: document.getElementById("runCode"),
+    resetCodeBtn: document.getElementById("resetCode"),
+    consoleOutput: document.getElementById("console"),
+    progressFill: document.getElementById("progressFill"),
+};
+
+export const CONSTANTS = {
+    SWIPE_MAX_Y: 80,
+    SWIPE_TRIGGER_X: 110,
+    SWIPE_START_X: 8,
+};
