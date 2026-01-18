@@ -36,11 +36,14 @@ export function updateProgress() {
 
     const pct = Math.round((done / total) * 100);
     if (selectors.progressFill) selectors.progressFill.style.width = pct + "%";
+    if (selectors.editorCounter) selectors.editorCounter.textContent = `(${done} / ${total})`;
 }
 
 export function renderQuestionCode(q) {
     if (!q.code) return "";
-    const lang = q.lang || "javascript";
+    let lang = (q.lang || "javascript").toLowerCase();
+    if (lang === "nodejs") lang = "javascript"; // Prism doesn't know nodejs
+
     return `
 <pre class="language-${lang}"><code class="language-${lang}">${escapeHtml(
         q.code
@@ -69,10 +72,13 @@ export function renderOptions(q) {
                 typeof opt.text === "string" && opt.text.trim().length > 0;
 
             if (hasCode) {
+                let optLang = (q.lang || "javascript").toLowerCase();
+                if (optLang === "nodejs") optLang = "javascript";
+
                 return `
 <div class="opt" role="button" tabindex="0" data-key="${escapeHtml(key)}">
   <div><strong>${label}</strong></div>
-  <pre class="language-${lang}"><code class="language-${lang}">${escapeHtml(
+  <pre class="language-${optLang}"><code class="language-${optLang}">${escapeHtml(
                     opt.code
                 )}</code></pre>
 </div>
@@ -174,9 +180,31 @@ export function render() {
     if (state.index >= active.length) state.index = 0;
 
     const q = active[state.index];
-    selectors.counter.textContent = `${state.index + 1} / ${active.length}`;
     state.locked = false;
 
+    // Check if finished
+    const total = active.length || 0;
+    let done = 0;
+    if (state.mode === "all") {
+        done = state.answeredAll.size;
+    } else {
+        done = active.reduce((acc, q) => acc + (state.answeredWrongs.has(q._uid) ? 1 : 0), 0);
+    }
+
+    if (total > 0 && done >= total) {
+        selectors.front.innerHTML = `
+            <div class="finish-msg" style="text-align: center; padding: 40px 20px;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">🎉 Tebrikler!</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">Seçilen tüm soruları başarıyla bitirdiniz.</p>
+                <button onclick="location.reload()" class="pick-btn" style="padding: 12px 24px; cursor: pointer;">Sıfırla ve Yeniden Başla</button>
+            </div>
+        `;
+        selectors.back.innerHTML = `<div class="explain" style="text-align: center; padding: 20px;">Harika bir iş çıkardın!</div>`;
+        selectors.counter.textContent = `${total} / ${total}`;
+        return;
+    }
+
+    selectors.counter.textContent = `${state.index + 1} / ${active.length}`;
     syncEditorWithQuestion(q);
 
     selectors.front.innerHTML = `

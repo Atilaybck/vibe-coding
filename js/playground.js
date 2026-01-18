@@ -3,7 +3,8 @@ import { state, selectors } from './config.js';
 
 export function syncEditorWithQuestion(q) {
     state.currentQuestionCode = q?.code && String(q.code).trim() ? String(q.code) : "";
-    const monacoLang = (q?.lang || "javascript").toLowerCase();
+    let monacoLang = (q?.lang || "javascript").toLowerCase();
+    if (monacoLang === "nodejs") monacoLang = "javascript";
 
     if (!state.monacoEditor) return;
 

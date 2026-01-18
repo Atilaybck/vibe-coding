@@ -45,6 +45,7 @@ export const selectors = {
     resetCodeBtn: document.getElementById("resetCode"),
     consoleOutput: document.getElementById("console"),
     progressFill: document.getElementById("progressFill"),
+    editorCounter: document.getElementById("editorCounter"),
 };
 
 export const CONSTANTS = {

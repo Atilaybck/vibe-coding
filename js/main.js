@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             e.target.closest(".modal-content");
 
         if (!isInteractive) {
-            next();
+            randomNext();
         }
     });
 
