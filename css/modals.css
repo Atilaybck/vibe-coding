@@ -19,8 +19,10 @@
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 32px;
-    width: 100%;
+    width: 95%;
     max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
     box-shadow: var(--shadow);
     animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -175,7 +177,51 @@
 }
 
 @media (max-width: 640px) {
-    .stats-grid {
+    .modal-content {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    .stats-grid,
+    .analytics-grid {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card,
+    .analytics-card {
+        padding: 12px;
+    }
+
+    .stat-val {
+        font-size: 22px;
+    }
+
+    .analytics-val {
+        font-size: 18px;
+    }
+
+    .analytics-section h3 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .analytics-container {
+        gap: 16px;
+    }
+
+    .weak-topic-item,
+    .recommendation-item {
+        padding: 10px 12px;
+    }
+
+    .topic-name,
+    .recommendation-text {
+        font-size: 13px;
     }
 }

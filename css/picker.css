@@ -85,3 +85,17 @@
     font-family: var(--font);
     font-weight: 600;
 }
+
+@media (max-width: 640px) {
+    .pick-panel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 340px;
+        max-height: 80vh;
+        z-index: 1000;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+}

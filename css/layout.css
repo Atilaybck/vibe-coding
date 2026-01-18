@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 h1 {
@@ -24,6 +25,8 @@ h1 {
     display: flex;
     gap: 12px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #shuffleBtn {
@@ -99,9 +102,40 @@ h1 {
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .top {
         flex-direction: column;
-        padding: 20px;
+        padding: 40px 20px 20px;
+        text-align: center;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .picker {
+        width: 100%;
+    }
+
+    .pick-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .controls {
+        gap: 8px;
+    }
+
+    .controls button {
+        padding: 10px 14px;
+        font-size: 13px;
+        flex: 1 1 auto;
     }
 }
