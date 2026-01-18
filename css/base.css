@@ -64,3 +64,13 @@ button:hover {
 button:active {
   transform: translateY(0);
 }
+
+pre,
+code {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+code {
+  word-break: break-word;
+}

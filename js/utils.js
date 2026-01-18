@@ -1,11 +1,5 @@
 // js/utils.js
-export function speak(text) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "tr-TR";
-    window.speechSynthesis.speak(utterance);
-}
+
 
 export function escapeHtml(s = "") {
     return String(s)

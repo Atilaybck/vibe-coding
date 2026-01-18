@@ -3,7 +3,7 @@ import { state, selectors } from './config.js';
 import { loadState, saveState } from './storage.js';
 import { updateStats, updateAnalyticsDashboard } from './analytics.js';
 import { initMonacoEditor, runCode } from './playground.js';
-import { initSwipe, resetCardTransform } from './swipe.js';
+
 import {
     render, next, prev, randomNext, shuffleCurrent,
     resetAll, toggleFlip, getActiveList, updateProgress
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Handlers
     selectors.card.addEventListener("click", (e) => {
-        if (state.swiping || e.target.closest("button") || e.target.closest(".opt")) return;
+        if (e.target.closest("button") || e.target.closest(".opt")) return;
         toggleFlip();
     });
 
@@ -90,30 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.key === "Escape") selectors.statsModal.classList.remove("open");
     });
 
-    // Swipe
-    function flyOutAndGo(dir) {
-        const flyX = dir * (window.innerWidth * 0.9);
-        selectors.card.style.transition = "transform 180ms ease, opacity 180ms ease";
-        selectors.card.style.transform = `translateX(${flyX}px) rotate(${dir * 10}deg)`;
-        selectors.card.style.opacity = "0";
 
-        setTimeout(() => {
-            state.flipped = false;
-            selectors.card.classList.remove("flip");
-            if (dir === -1) next();
-            else prev();
-
-            selectors.card.style.transition = "none";
-            selectors.card.style.transform = `translateX(${dir * -60}px)`;
-            requestAnimationFrame(() => {
-                selectors.card.style.transition = "transform 200ms ease, opacity 200ms ease";
-                selectors.card.style.transform = "";
-                selectors.card.style.opacity = "1";
-            });
-        }, 190);
-    }
-
-    initSwipe(flyOutAndGo);
 
     // Picker
     if (selectors.pickBtn) {

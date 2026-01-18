@@ -1,6 +1,6 @@
 // js/quiz.js
 import { state, selectors } from './config.js';
-import { escapeHtml, getAnswerKey, getOptionKey, speak } from './utils.js';
+import { escapeHtml, getAnswerKey, getOptionKey } from './utils.js';
 import { saveState } from './storage.js';
 import { updateStats, startQuestionTimer } from './analytics.js';
 import { syncEditorWithQuestion } from './playground.js';
@@ -153,21 +153,7 @@ export function bindOptionClicks() {
     });
 }
 
-export function bindSpeakButtons() {
-    const btns = document.querySelectorAll(".speak-btn");
-    btns.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const active = getActiveList();
-            const q = active[state.index];
-            if (btn.classList.contains("front-speak")) {
-                speak(q.title + ". " + (q.options ? "Select an option." : ""));
-            } else {
-                speak("The answer is " + q.answer + ". " + (q.explain || ""));
-            }
-        });
-    });
-}
+
 
 export function render() {
     const active = getActiveList();
@@ -208,7 +194,6 @@ export function render() {
     syncEditorWithQuestion(q);
 
     selectors.front.innerHTML = `
-    <button class="speak-btn front-speak" title="Seslendir">🔊</button>
     <p class="q-title">${escapeHtml(q.title)}</p>
     ${renderQuestionCode(q)}
     <div class="options">${renderOptions(q)}</div>
@@ -216,7 +201,6 @@ export function render() {
   `;
 
     selectors.back.innerHTML = `
-    <button class="speak-btn back-speak" title="Seslendir">🔊</button>
     <p class="answer">Cevap: ${escapeHtml(q.answer)}</p>
     <div class="explain">${escapeHtml(q.explain || "")}</div>
     <div class="muted">Tekrar tıkla → soruya dön</div>
@@ -232,7 +216,7 @@ export function render() {
     selectors.card.style.opacity = "";
 
     bindOptionClicks();
-    bindSpeakButtons();
+
     updateProgress();
     fitCardHeight();
     updateStats();

@@ -12,11 +12,6 @@ export const state = {
     currentQuestionCode: "",
     questionStartTime: null,
     analyticsData: {},
-    swiping: false,
-    touchStartX: 0,
-    touchStartY: 0,
-    dragging: false,
-    dxLive: 0,
 };
 
 export const selectors = {
@@ -48,8 +43,3 @@ export const selectors = {
     editorCounter: document.getElementById("editorCounter"),
 };
 
-export const CONSTANTS = {
-    SWIPE_MAX_Y: 80,
-    SWIPE_TRIGGER_X: 110,
-    SWIPE_START_X: 8,
-};
